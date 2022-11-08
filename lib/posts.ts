@@ -4,20 +4,15 @@ import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'posts');
+const postsDirectory = path.join(process.cwd(), 'text', 'posts');
 
 export function getSortedPostsData(filterByTag: string | null = null) {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    // Remove ".md" from file name to get id
+  const allPostsData = fileNames.reduce((allPosts, fileName) => {
     const id = fileName.replace(/\.md$/, '');
-
-    // Read markdown file as string
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-
-    // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents);
 
     // filter by tag if param present
@@ -25,26 +20,26 @@ export function getSortedPostsData(filterByTag: string | null = null) {
       if (matterResult.data.tags.includes(filterByTag)) {
         return [
           {
-            frontMatter: allPostsData,
-            slug: fileName.replace('.md', ''),
+            id,
+            ...matterResult.data,
           },
-          ...fileNames,
+          ...allPosts,
         ]
       } else {
-        return fileNames
+        return allPosts;
       }
+    } else {
+      return [
+        {
+          id,
+          ...matterResult.data,
+        },
+        ...allPosts,
+      ]    
     }
+  }, []);
 
-
-    // Combine the data with the id
-    return {
-      id,
-      ...(matterResult.data as { title: string; created: string; updated: string; tags: string }),
-    };
-  });
-
-
-  // Sort posts by date
+  // TODO: Actually sort posts by date
   return allPostsData.sort((a, b) => {
     if (a < b) {
       return 1;
@@ -102,28 +97,15 @@ export async function getPostData(id: string) {
   };
 }
 
-export type TagOptions = {
-  [key: string]: string[],
-}
+export function getAllTags() {
+  const fileNames = fs.readdirSync(postsDirectory);
+  const allTags = new Set<string>(); 
 
-async function collateTags(dataType: string) {
-  const files = fs.readdirSync(path.join(postsDirectory, 'data', dataType))
-  let allTags = new Set<string>() // to ensure only unique tags are added
-
-  files.map((postSlug) => {
-    const source = fs.readFileSync(path.join(postsDirectory, 'data', dataType, postSlug), 'utf8')
+  fileNames.map((postSlug) => {
+    const source = fs.readFileSync(path.join(postsDirectory, postSlug), 'utf8')
     const { data } = matter(source)
 
     data.tags.forEach((tag: string) => allTags.add(tag))
   })
-
   return Array.from(allTags)
-}
-
-export async function getTags(dataType: string) {
-  const tags: TagOptions = {
-    blog: await collateTags('blog'),
-		// books: await collateTags('books'),
-  }
-  return tags[dataType]
 }

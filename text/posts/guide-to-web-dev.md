@@ -2,7 +2,7 @@
 title: 'A Guide to Learning Web Dev for Software Engineers'
 updated: '2022-11-07'
 created: '2022-11-07'
-tags: asf, asdf 
+tags: ['asf', 'fdagoowow']
 ---
 
 This is the path I took to dive into web development.

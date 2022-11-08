@@ -1,30 +1,31 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../../components/layout'
 import utilStyles from '../../styles/utils.module.css'
-import { getSortedPostsData } from '../../lib/posts'
+import { getSortedPostsData, getAllTags } from '../../lib/posts'
 import Link from 'next/link'
 import Date from '../../components/date'
 import { GetStaticProps } from 'next'
-import { Box } from '@mui/material'
+import type { NextPage } from 'next'
+import {
+  Box
+} from '@mui/material';
 
-export default function BlogHome({
-  allPostsData
-}: {
+type BlogHomeProps = {
   allPostsData: {
     created: string
     updated: string
     title: string
     id: string
     tags: string
-  }[]
-}) {
+  }[], 
+  allTags: string[]
+}
+
+const BlogHome: NextPage = (props: BlogHomeProps) => {
+  const { allPostsData, allTags } = props;
   return (
-    <Layout>
-      <Box sx={{ padding: '20px' }}>
-        <Head>
-          <title>Angela Hsu - Blog</title>
-        </Head>
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+    <Box sx={{ padding: '20px', display: 'grid', gridTemplateColumns: '2fr 1fr'}}>
+      <Box sx={{ gridColumn: '1 / 1'}}>
+        <main>
+          <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
           <h2 className={utilStyles.headingLg}>Blog</h2>
           <ul className={utilStyles.list}>
             {allPostsData.map(({ id, created, updated, title, tags }) => (
@@ -41,17 +42,32 @@ export default function BlogHome({
               </li>
             ))}
           </ul>
-        </section>
+        </section>        
+      </main>
       </Box>
-    </Layout>
+      <Box sx={{ gridColumn: '2 / 2'}}>
+        <h2>Tags</h2>
+        <ul className={utilStyles.list}>
+          {allTags.map((tag) => (
+            <li className={utilStyles.listItem} key={tag}>
+              <Link href={`/blog/tags/${tag}`}>{tag}</Link>
+            </li>
+          ))}
+        </ul>
+      </Box>
+    </Box>
   )
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData()
+  const allPostsData = getSortedPostsData();
+  const allTags = getAllTags();
   return {
     props: {
-      allPostsData
+      allPostsData,
+      allTags
     }
   }
 }
+
+export default BlogHome;

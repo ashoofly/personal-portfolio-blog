@@ -2,7 +2,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Box, Card, CardContent, CardMedia, Button, Typography } from '@mui/material';
 
-interface ExperienceProps {
+type ExperienceProps = {
   content: {
     id: number,
     icon: JSX.Element,

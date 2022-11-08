@@ -4,24 +4,25 @@ import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
 import natureThemeOptions from '../styles/theme/natureThemeOptions';
 import createEmotionCache from "../styles/utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
-}
+import Layout from '../components/layout';
 
 const clientSideEmotionCache = createEmotionCache();
 const natureTheme = createTheme(natureThemeOptions);
 
-const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
-  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+type MyAppProps = AppProps & {
+  emotionCache?: EmotionCache
+}
 
+export default function MyApp(props: MyAppProps) {
+  const { Component, pageProps, emotionCache = clientSideEmotionCache } = props;
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={natureTheme}>
         <CssBaseline />
-        <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
       </ThemeProvider>
     </CacheProvider>
   );
 };
-
-export default MyApp;

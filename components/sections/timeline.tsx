@@ -1,8 +1,7 @@
 import Image from 'next/image';
-import { Stack, StackProps, styled, Box } from '@mui/material';
-import utilStyles from '../styles/utils.module.css';
-import ContainerGrid from './common/ContainerGrid';
-import Experience from './experience';
+import { Box } from '@mui/material';
+import utilStyles from '../../styles/utils.module.css';
+import Experience from '../experienceCard';
 
 interface TimelineProps {}
 
@@ -102,13 +101,10 @@ const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
     <>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         {experiences.map((experience, index) => (
-          <>
-            <Experience
-              key={experience.id}
-              content={experience}
-            />
+          <Box key={experience.id}>
+            <Experience content={experience} />
             <Box sx={ index < experiences.length-1 ? {height: '150px', width: '0px', border: '2px solid #e4e4e4', margin: 'auto'} : {}}></Box>
-          </>
+          </Box>
         ))}
       </Box>
     </>

@@ -67,7 +67,7 @@ MyDocument.getInitialProps = async (ctx) => {
   /* eslint-enable */
 
   const initialProps = await Document.getInitialProps(ctx);
-  // This is important. It prevents emotion to render invalid HTML.
+  // This is important. It prevents emotion from rendering invalid HTML.
   // See https://github.com/mui-org/material-ui/issues/26561#issuecomment-855286153
   const emotionStyles = extractCriticalToChunks(initialProps.html);
   const emotionStyleTags = emotionStyles.styles.map((style) => (

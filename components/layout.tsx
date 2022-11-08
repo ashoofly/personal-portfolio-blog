@@ -1,18 +1,17 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import styles from '../styles/layout.module.css';
-import ButtonAppBar from '../components/appbar';
+import ButtonAppBar from './appbar';
 import Toolbar from '@mui/material/Toolbar';
+import sectionStyles from '../styles/section.module.css';
 
 export const siteTitle = 'Angela Hsu';
 
-export default function Layout({
-  children,
-  home
-}: {
-  children: React.ReactNode
-  home?: boolean
-}) {
+type LayoutProps = {
+  children: React.ReactNode,
+  home?: boolean,
+}
+
+export default function Layout(props: LayoutProps) {
+  const { children } = props;
   return (
     <>
       <ButtonAppBar />
@@ -33,6 +32,9 @@ export default function Layout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main>{children}</main>
+      <footer className={`${sectionStyles.footer} ${sectionStyles.dark}`}>
+        <p className={sectionStyles.footerContent}>&copy; 2022 Angela Hsu</p>
+      </footer>  
     </>
   );
 }

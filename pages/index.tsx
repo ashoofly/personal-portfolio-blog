@@ -1,71 +1,26 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { GetStaticProps } from 'next';
-import Layout, { siteTitle } from '../components/layout';
-import Date from '../components/date';
-import { getSortedPostsData } from '../lib/posts';
-import utilStyles from '../styles/utils.module.css';
-import Image from 'next/image';
-import indexStyles from '../styles/index.module.css';
+import { GetStaticProps, GetServerSideProps } from 'next';
+import { siteTitle } from '../components/layout';
 import sectionStyles from '../styles/section.module.css';
 import { Box, Typography } from '@mui/material';
-import TypingEffect from '../components/typingEffect';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import Timeline from '../components/timeline';
+import Timeline from '../components/sections/timeline';
+import Summary from '../components/sections/summary';
+import { getFileContent } from '../lib/text';
+import type { NextPage } from 'next'
 
-export default function Home({
-  allPostsData
-}: {
-  allPostsData: {
-    date: string
-    title: string
-    id: string
-  }[]
-}) {
+type HomeProps = {
+  summary: string
+}
+
+const Home: NextPage = (props: HomeProps) => {
+  const { summary } = props;
   return (
-    <Layout home>
+    <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section id="about" className={`${sectionStyles.horizontal} ${sectionStyles.dark} ${indexStyles.intro}`}>
-        <Image
-          priority
-          src="/images/profile.jpg"
-          className={utilStyles.borderCircle}
-          height={250}
-          width={250}
-          alt="Angela Hsu faceshot"
-        />
-        <summary>
-          <header>
-            <Typography component="p" variant="h5">
-              Hi, I&apos;m
-            </Typography>
-            <Typography component="h1" variant="h2" fontWeight="bold">
-              Angela Hsu
-            </Typography>
-          </header>
-          <Box color="text.secondary">
-            <TypingEffect text={[
-              'a curious learner',
-              'a professional problem-solver',
-              'an empathetic listener',
-              'a lifelong tree hugger',
-              'a committed team member'
-            ]} />
-          </Box>
-          <Box>
-            <LinkedInIcon />
-            <GitHubIcon />
-          </Box>
-          <section className={sectionStyles.content}>
-            <p>I am a software engineer</p>
-            <p>Curious, caring, and committed software professional with over 7 years in the industry, across quality, development, and DevOps teams, as both an individual contributor and team leader. Proven track record of delivering projects on time with a strong attention to quality and user experience. Interested in front-end or full-stack software engineering roles at an organization with a clear mission to address our current climate crisis, an issue I care about deeply.</p>
-          </section>
-        </summary>
-      </section>
-
+      <Summary content={summary} />
       <section id="projects" className={`${sectionStyles.vertical} ${sectionStyles.light}`}>
         <header>
           <Typography component="h2" variant="h3" fontWeight="bold" align="center">
@@ -110,19 +65,17 @@ export default function Home({
         </header>
         <Timeline />
       </section>
-
-      <footer className={`${sectionStyles.footer} ${sectionStyles.dark}`}>
-        <p className={sectionStyles.footerContent}>&copy; 2022 Angela Hsu</p>
-      </footer>  
-    </Layout>
+    </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const allPostsData = getSortedPostsData();
+  const summary = await getFileContent('summary');
   return {
     props: {
-      allPostsData,
-    },
+      summary
+    }
   };
 }
+
+export default Home;

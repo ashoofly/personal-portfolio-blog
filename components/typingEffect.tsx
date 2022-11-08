@@ -9,7 +9,7 @@ const TypingEffect: React.FunctionComponent<TypingEffectProps> = (props) => {
     eraseDelay = 2500,
     eraseSpeed = 50,
     speed = 75,
-    typingDelay = 150,
+    typingDelay = 1000,
     ...otherProps
   } = props;
 

@@ -13,7 +13,7 @@ export default function ButtonAppBar() {
             display: 'flex',
             justifyContent: 'flex-end',
             bgcolor: '#a2bf97',
-            color: '#f7f1da'
+            color: '#f7f1da',
           }}
         >
           <Button color="inherit"><Link href="/#">About</Link></Button>
