@@ -1,0 +1,58 @@
+---
+title: 'A Guide to Learning Web Dev for Software Engineers'
+updated: '2022-11-07'
+created: '2022-11-07'
+tags: asf, asdf 
+---
+
+This is the path I took to dive into web development.
+
+# [The Odin Project](https://www.theodinproject.com/)
+### **Learned**: HTML / CSS (Flexbox, CSS Grid)
+
+I actually came across this project in 2014 when it was first getting started and really liked it, so when I was getting back into learning again, I was glad to see that it was still around and even better! 
+
+High quality content, all free, community-sourced, project-based.
+
+It also goes into either Ruby on Rails or node.js track, but by the time I got to the 6th project, I wanted to dive deeper into React. That was when I found...
+
+# [Scrimba](https://scrimba.com/)
+### **Learned**: React, Responsive Design
+
+Bob Ziroll does a really good job with this [Learn React for free](https://scrimba.com/learn/learnreact) course. 
+
+He explained concepts really well, you got to practice in the browser by yourself (using their 'scrims'), and by the end of the course, I was ready to start on my own project from scratch. Scrimba also has an active Discord community where you can ask any questions.
+
+That is when I realized I needed to learn responsive design. I went through the 'Responsive Design' module in the [Frontend Developer Career Path](https://scrimba.com/learn/frontend), taught by Kevin Powell, and this was also really helpful. 
+
+Now I was ready to jump off into my...
+
+# [Crossword Project](https://www.crosswordwith.me)
+### **Learned**: React, Redux, WebSockets, NodeJS, Express, and Firebase (Real-Time Database, Cloud Functions, and Authentication)
+
+This turned out to be a three-month detour... well not exactly a detour, but it took a bit longer than I thought it would. I learned a lot though, and in the end, I had a full-stack web app! 
+
+That was when I started thinking of interviews, and found the high quality...
+
+# [Frontend Masters](https://frontendmasters.com/)
+### **Learned**: Advanced JavaScript
+
+Wow, [Will Sentance](https://frontendmasters.com/teachers/will-sentance/) is such an engaging teacher. He made learning really fun. 
+
+I went through his [JavaScript: The Hard Parts, v2](https://frontendmasters.com/courses/javascript-hard-parts-v2/) and [The Hard Parts of Servers & Node.js](https://frontendmasters.com/courses/servers-node-js/). 
+
+I also appreciated Jem Young's [Interviewing for Front-End Engineers](https://frontendmasters.com/courses/interviewing-frontend/).
+
+I've also started watching and am eager to complete:
+
+* [Website Accessibility, v2](https://frontendmasters.com/courses/accessibility-v2/), with Jon Kuperman
+* [Design for Developers](https://frontendmasters.com/courses/design-for-developers/), with Sarah Drasner
+* [Design Systems with React & Storybook](https://frontendmasters.com/courses/design-systems/), with Emma Bostian
+
+All the Frontend Masters courses I have looked at so far have been really high quality. 
+
+Other things on my to-do list:
+* [Modern Search Engine Optimization (SEO)](https://frontendmasters.com/courses/modern-seo/), with Mike North
+* One of the [TypeScript](https://frontendmasters.com/courses/?q=typescript) courses
+
+I'll update this as I go through them.

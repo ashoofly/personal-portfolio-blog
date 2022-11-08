@@ -1,0 +1,8 @@
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  background-color: rgb(38, 100, 38);
+  color: #eeeecb;
+}

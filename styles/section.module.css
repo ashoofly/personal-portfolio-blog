@@ -1,0 +1,40 @@
+.horizontal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  padding: 80px;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+  gap: 1rem;
+  padding: 80px;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.footerContent {
+  margin: 0;
+}
+
+.content {
+  max-width: 700px;
+}
+
+.dark {
+  background-color: rgb(38, 100, 38);
+  color: #eeeecb;
+}
+
+.light {
+  background-color: #a2bf97;
+  color: #054729
+}
