@@ -47,8 +47,24 @@
   margin: 0;
 }
 
+.listTitle {
+  padding-bottom: 10px;
+}
+
 .listItem {
-  margin: 0 0 1.25rem;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 0;
+}
+
+.compactListItem {
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.compactListItemText {
+  margin: 0;
 }
 
 .lightText {

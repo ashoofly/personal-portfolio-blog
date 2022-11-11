@@ -3,7 +3,9 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
- 
+import { parseISO, compareDesc } from 'date-fns';
+
+
 const postsDirectory = path.join(process.cwd(), 'pages/blog/posts');
 
 export function getSortedPostsData(filterByTag: string | null = null, limit: number = -1) {
@@ -39,15 +41,15 @@ export function getSortedPostsData(filterByTag: string | null = null, limit: num
     }
   }, []);
 
-  // TODO: Actually sort posts by date
+  // Sort posts by last updated in reverse chronological order
   const sortedPosts = allPostsData.sort((a, b) => {
-    if (a < b) {
-      return 1;
-    } else if (a > b) {
-      return -1;
-    } else {
-      return 0;
-    }
+    const aDateString = a.updated ? a.updated : a.created;
+    const bDateString = b.updated ? b.updated :  b.created;
+
+    const aDate = parseISO(aDateString);
+    const bDate = parseISO(bDateString);
+
+    return compareDesc(aDate, bDate);
   });
   return (limit === -1 ? sortedPosts : sortedPosts.slice(0, limit));
 }
@@ -100,13 +102,12 @@ export async function getPostData(id: string) {
 
 export function getAllTags() {
   const fileNames = fs.readdirSync(postsDirectory);
-  const allTags = new Set<string>(); 
+  const allTags = {}; 
 
   fileNames.map((postSlug) => {
-    const source = fs.readFileSync(path.join(postsDirectory, postSlug), 'utf8')
-    const { data } = matter(source)
-
-    data.tags.forEach((tag: string) => allTags.add(tag))
+    const source = fs.readFileSync(path.join(postsDirectory, postSlug), 'utf8');
+    const { data } = matter(source);
+    data.tags.forEach((tag: string) => (tag in allTags ? allTags[tag] += 1 : allTags[tag] = 1));
   })
-  return Array.from(allTags)
+  return allTags;
 }

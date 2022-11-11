@@ -1,11 +1,15 @@
 import utilStyles from '../../../styles/utils.module.css'
 import { getSortedPostsData, getAllTags } from '../../../lib/posts'
 import Link from 'next/link'
-import Date from '../../../components/date'
+import { formatDateString } from '../../../components/date'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import type { NextPage } from 'next'
-import Box from '@mui/material/Box';
+import { Typography, List, ListItem, ListItemText } from '@mui/material';
 import styles from '../../../styles/layout.module.css';
+import BlogLayout from '../../../components/layouts/blogLayout';
+import utils from '../../../styles/utils.module.css';
+import blog from '../../../styles/blog.module.css';
+
 
 type TagProps = {
   tag: string,
@@ -16,55 +20,30 @@ type TagProps = {
     title: string
     id: string
   }[],
-  allTags: string[]
+  allTags: {
+    [tag: string]: number 
+  }
 }
 
 const Tag: NextPage = (props: TagProps) => {
-  const { tag, taggedPostsData: data, allTags } = props;
+  const { tag, taggedPostsData, allTags } = props;
   return (
-
-    <Box sx={{ padding: '20px', display: 'grid', gridTemplateColumns: '2fr 1fr'}}>
-      <Box sx={{ gridColumn: '1 / 1'}}>
-        <main>
-          <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-            <h2 className={utilStyles.headingLg}>Tag: {tag}</h2>
-            <ul className={utilStyles.list}>
-              {data.map(({ id, created, updated, title, tags }) => (
-                <li className={utilStyles.listItem} key={id}>
-                  <Link href={`/blog/posts/${id}`}>{title}</Link>
-                  <br />
-                  <small className={utilStyles.lightText}>
-                    created <Date dateString={created} /> 
-                    updated <Date dateString={updated} />
-                    tags {tags}
-                  </small>
-                </li>
-              ))}
-            </ul>
-            <div className={styles.backToHome}>
-              <Link href="/blog">← Back to Blog Home</Link>
-            </div>
-          </section>        
-        </main>
-      </Box>
-      <Box sx={{ gridColumn: '2 / 2'}}>
-        <h2>Tags</h2>
-        <ul className={utilStyles.list}>
-          {allTags.map((tag) => (
-            <li className={utilStyles.listItem} key={tag}>
-              <Link href={`/blog/tags/${tag}`}>{tag}</Link>
-            </li>
-          ))}
-        </ul>
-      </Box>
-    </Box>
-
+    <BlogLayout allTags={allTags}>
+      <Typography variant="h5" className={`${utils.listTitle} ${blog.tagTitle}`}>Tag: {tag}</Typography>
+      <List aria-label="blog-posts" className={utils.list}>
+        {taggedPostsData.map(({ id, created, updated, title }) => (
+          <ListItem className={utils.listItem} key={id}>
+            <ListItemText 
+              primary={<Link href={`/blog/posts/${id}`}>{title}</Link>} 
+              secondary={updated ? `${formatDateString(updated)} (updated)` : `${formatDateString(created)}`} 
+            />
+          </ListItem>
+        ))}
+      </List>
+    </BlogLayout>
   )
 }
 
-          //   <li key={t}>{t}</li>
-          //   // <Link href={`/blog/tags/${t}`}>${t}</Link>
-          // })}
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const taggedPostsData = getSortedPostsData(params?.tag as string);
   const allTags = getAllTags();
@@ -79,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const tags = getAllTags();
-  const paths = tags.map((tag: string) => ({
+  const paths = Object.keys(tags).map((tag: string) => ({
     params: {
       tag,
     },

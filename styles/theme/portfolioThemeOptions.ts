@@ -3,18 +3,19 @@ import { ThemeOptions } from '@mui/material/styles';
 const portfolioThemeOptions: ThemeOptions = {
   typography: {
     fontFamily: [
-      'Roboto',
+      'IBM Plex Sans JP',
       'Noto Serif'
     ].join(','),
     h1: {
     
     },
-    h2: {
+    h2_serif: {
       fontFamily: 'Noto Serif'
 
     },
+    h2: {
+    },
     h3: {
-      fontFamily: 'Noto Serif'
 
     },
     h4: {
@@ -33,10 +34,8 @@ const portfolioThemeOptions: ThemeOptions = {
 
     },
     body1: {
-      fontFamily: 'Noto Serif'
     },
     body2: {
-      fontFamily: 'Noto Serif'
     },
     button: {
     },

@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import type { NextPage } from 'next';
 import { getSortedPostsData } from '../lib/posts';
-import { siteTitle } from '../components/layout';
+import { siteTitle } from '../components/layouts/layout';
 import Experience from '../components/sections/experience';
 import Summary from '../components/sections/summary';
 import Projects from '../components/sections/projects';

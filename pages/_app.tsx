@@ -5,7 +5,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import portfolioThemeOptions from '../styles/theme/portfolioThemeOptions';
 import createEmotionCache from "../styles/utils/createEmotionCache";
 import { CacheProvider, EmotionCache } from "@emotion/react";
-import Layout from '../components/layout';
+import Layout from '../components/layouts/layout';
 
 const clientSideEmotionCache = createEmotionCache();
 const natureTheme = createTheme(portfolioThemeOptions);

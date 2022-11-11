@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import ButtonAppBar from './appbar';
+import ButtonAppBar from '../appbar';
 import Toolbar from '@mui/material/Toolbar';
-import sectionStyles from '../styles/section.module.css';
+import sectionStyles from '../../styles/section.module.css';
 
 export const siteTitle = 'Angela Hsu';
 
