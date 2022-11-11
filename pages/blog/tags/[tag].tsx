@@ -31,7 +31,7 @@ const Tag: NextPage = (props: TagProps) => {
             <ul className={utilStyles.list}>
               {data.map(({ id, created, updated, title, tags }) => (
                 <li className={utilStyles.listItem} key={id}>
-                  <Link href={`/blog/${id}`}>{title}</Link>
+                  <Link href={`/blog/posts/${id}`}>{title}</Link>
                   <br />
                   <small className={utilStyles.lightText}>
                     created <Date dateString={created} /> 

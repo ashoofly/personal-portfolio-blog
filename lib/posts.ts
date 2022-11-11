@@ -3,14 +3,14 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+ 
+const postsDirectory = path.join(process.cwd(), 'pages/blog/posts');
 
-const postsDirectory = path.join(process.cwd(), 'text', 'posts');
-
-export function getSortedPostsData(filterByTag: string | null = null) {
+export function getSortedPostsData(filterByTag: string | null = null, limit: number = -1) {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.reduce((allPosts, fileName) => {
-    const id = fileName.replace(/\.md$/, '');
+    const id = fileName.replace(/\.mdx$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const matterResult = matter(fileContents);
@@ -40,7 +40,7 @@ export function getSortedPostsData(filterByTag: string | null = null) {
   }, []);
 
   // TODO: Actually sort posts by date
-  return allPostsData.sort((a, b) => {
+  const sortedPosts = allPostsData.sort((a, b) => {
     if (a < b) {
       return 1;
     } else if (a > b) {
@@ -49,6 +49,7 @@ export function getSortedPostsData(filterByTag: string | null = null) {
       return 0;
     }
   });
+  return (limit === -1 ? sortedPosts : sortedPosts.slice(0, limit));
 }
 
 export function getAllPostIds() {
@@ -70,14 +71,14 @@ export function getAllPostIds() {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, ''),
+        id: fileName.replace(/\.mdx$/, ''),
       },
     };
   });
 }
 
 export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.md`);
+  const fullPath = path.join(postsDirectory, `${id}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
   // Use gray-matter to parse the post metadata section

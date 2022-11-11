@@ -14,18 +14,20 @@ type ExperienceProps = {
   }
 }
 
-const Experience = ({ content }: ExperienceProps) => {
+const ExperienceCard = ({ content }: ExperienceProps) => {
   const { id, icon, title, years, location, duration = 'N/A', description } = content;
   return (
     <Card sx={{ boxShadow: 'none' }}>
-      <CardContent sx={{ display: 'grid', gridTemplateColumns: '2fr 1fr 2fr' }}>
+      <CardContent sx={{ display: 'grid', gridTemplateColumns: '2fr 1fr 2fr', justifyItems: 'center', gap: '15px' }}>
         <Box sx={{
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
           gridColumn: '2 / 2',
+          // maxWidth: '200px',
         }}>{icon}</Box>
-        <Box sx={ (id % 2 === 0) ? { gridColumn: '3 / 3', gridRow: '1 / 1' } : { gridColumn: '1 / 1', gridRow: '1 / 1', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', textAlign: 'right' }}>
+
+        <Box sx={ (id % 2 === 0) ? { gridColumn: '3 / 3', gridRow: '1 / 1', maxWidth: '400px', justifySelf: 'left' } : { gridColumn: '1 / 1', gridRow: '1 / 1', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', textAlign: 'right', maxWidth: '400px', justifySelf: 'right' }}>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {years}
           </Typography>
@@ -45,4 +47,4 @@ const Experience = ({ content }: ExperienceProps) => {
   );
 }
 
-export default Experience;
+export default ExperienceCard;

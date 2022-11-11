@@ -16,10 +16,10 @@ export default function ButtonAppBar() {
             color: '#f7f1da',
           }}
         >
-          <Button color="inherit"><Link href="/#">About</Link></Button>
-          <Button color="inherit"><Link href="/#projects">Projects</Link></Button>
-          <Button color="inherit"><Link href="/#experience">Experience</Link></Button>
-          <Button color="inherit"><Link href="/blog">Blog</Link></Button>
+          <Button><Link href="/#">About</Link></Button>
+          <Button><Link href="/#projects">Projects</Link></Button>
+          <Button><Link href="/#experience">Experience</Link></Button>
+          <Button><Link href="/blog">Blog</Link></Button>
         </Toolbar>
       </AppBar>
     </Box>

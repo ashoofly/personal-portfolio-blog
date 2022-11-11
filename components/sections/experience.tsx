@@ -1,23 +1,27 @@
 import Image from 'next/image';
-import { Box } from '@mui/material';
 import utilStyles from '../../styles/utils.module.css';
-import Experience from '../experienceCard';
+import ExperienceCard from '../experienceCard';
+import sectionStyles from '../../styles/section.module.css';
+import { Box, Typography } from '@mui/material';
 
-interface TimelineProps {}
 
-const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
+import utIcon from '../../public/images/ut-icon.png';
+import arlIcon from '../../public/images/arl-icon.jpg';
+import optarosIcon from '../../public/images/optaros-icon.png';
+import pingIcon from '../../public/images/ping.png';
+import earthIcon from '../../public/images/earth.png';
 
-  const experiences = [
+export default function Experience() {
+
+  const experienceData = [
     {
       id: 1,
       icon: (
         <Image
-          priority
-          src="/images/ut-icon.png"
+          src={utIcon}
           className={utilStyles.borderCircle}
-          height={150}
-          width={150}
           alt="University of Texas logo"
+          style={{ objectFit: 'contain' }}
         />
       ),
       title: 'BS in Computer Science',
@@ -30,12 +34,10 @@ const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
       id: 2,
       icon: (
         <Image
-          priority
-          src="/images/arl-icon.jpg"
+          src={arlIcon}
           className={utilStyles.borderCircle}
-          height={150}
-          width={150}
           alt="ARL logo"
+          style={{ objectFit: 'contain' }}
         />
       ),
       title: 'Applied Research Labs',
@@ -48,11 +50,9 @@ const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
       id: 3,
       icon: (
         <Image
-          priority
-          src="/images/optaros-icon.png"
-          height={150}
-          width={150}
+          src={optarosIcon}
           alt="Venn diagram figure with Optaros in the middle and Strategy, Design, and Development circles overlapping"
+          style={{ objectFit: 'contain' }}
         />
       ),
       title: 'Optaros (now MRM)',
@@ -65,11 +65,9 @@ const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
       id: 4,
       icon: (
         <Image
-          priority
-          src="/images/ping-icon.jpg"
-          height={150}
-          width={380}
+          src={pingIcon}
           alt="Ping Identity icon"
+          style={{ objectFit: 'contain' }}
         />
       ),
       title: 'Ping Identity',
@@ -82,12 +80,10 @@ const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
       id: 5,
       icon: (
         <Image
-          priority
-          src="/images/earth.jpg"
+          src={earthIcon}
           className={utilStyles.borderCircle}
-          height={175}
-          width={175}
           alt="Web and climate image"
+          style={{ objectFit: 'contain' }}
         />
       ),
       title: 'Learning web development & career shift to climate tech',
@@ -98,17 +94,23 @@ const Timeline: React.FunctionComponent<TimelineProps> = (props) => {
   ];
 
   return (
-    <>
+    <section id="experience" className={`${sectionStyles.vertical}`}>
+      <header style={{ marginBottom: "20px" }}>
+        <Typography component="h2" variant="h3" fontWeight="bold" align="center">
+              Experience
+        </Typography>
+        <Typography component="p" align="center">
+              My professional journey so far
+        </Typography>
+      </header>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        {experiences.map((experience, index) => (
+        {experienceData.map((experience, index) => (
           <Box key={experience.id}>
-            <Experience content={experience} />
-            <Box sx={ index < experiences.length-1 ? {height: '150px', width: '0px', border: '2px solid #e4e4e4', margin: 'auto'} : {}}></Box>
+            <ExperienceCard content={experience} />
+            <Box sx={ index < experienceData.length-1 ? {height: '150px', width: '0px', border: '2px solid #e4e4e4', margin: 'auto', backgroundColor: '#e4e4e4'} : {}}></Box>
           </Box>
         ))}
       </Box>
-    </>
+    </section>
   );
 };
-
-export default Timeline;

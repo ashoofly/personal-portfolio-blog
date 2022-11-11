@@ -8,7 +8,9 @@ import sectionStyles from '../../styles/section.module.css';
 import utilStyles from '../../styles/utils.module.css';
 
 import TypingEffect from '../typingEffect';
+import Link from '@mui/material/Link';
 
+import SummaryText from '../content/summaryText.mdx';
 
 const attributes = [
   {
@@ -42,7 +44,7 @@ const attributes = [
 
 const textRenderer = (text, i) => {
   return (
-    <span style={{ color: attributes[i].color}}>{text}</span>
+    <span style={{ color: attributes[i].color, fontFamily: "Roboto"}}>{text}</span>
   );
 }
 
@@ -54,25 +56,36 @@ export default function Summary(props: SummaryProps) {
   const { content } = props;
   return (
     <section id="about" className={`${sectionStyles.horizontal} ${indexStyles.intro}`}>
-      <figure>
+      <figure style={{
+        display: 'flex',
+        'flex-direction': 'column',
+        'align-items': 'center',
+        'gap': '10px'
+      }}>
         <Image
           priority
           src="/images/profile.jpg"
           className={utilStyles.borderCircle}
           height={250}
           width={250}
+          layout="responsive"
           alt="Angela Hsu faceshot"
         />
-        <figcaption><i>yes, this is the only picture of me,
+        <figcaption style={{
+          'max-width': '250px',
+          'font-size': 'small',
+          'display': 'flex',
+          'text-align': 'center'
+        }}><i>yes, this is the only picture of me,<br />
           I use it everywhere</i></figcaption>
       </figure>
 
       <summary>
         <header>
-          <Typography component="p" variant="h5">
+          <Typography variant="h5">
             Hi, I&apos;m
           </Typography>
-          <Typography component="h1" variant="h2" fontWeight="bold">
+          <Typography variant="h2" fontWeight="bold">
             Angela Hsu
           </Typography>
         </header>
@@ -82,12 +95,17 @@ export default function Summary(props: SummaryProps) {
             displayTextRenderer={textRenderer}
           />
         </Box>
-        <Box>
-          <LinkedInIcon />
-          <GitHubIcon />
+        <Box sx={{
+          display: 'flex',
+          gap: '10px',
+          height: '3rem',
+          alignItems: 'center'
+        }}>
+          <Link href="https://www.linkedin.com/in/ayhsu/" target="_blank" rel="noreferrer"><LinkedInIcon color="action" fontSize="large" /></Link>
+          <Link href="https://github.com/ashoofly" target="_blank" rel="noreferrer"><GitHubIcon color="action" fontSize="large" /></Link>
         </Box>
         <section className={sectionStyles.content}>
-          <div dangerouslySetInnerHTML={{ __html: content }} />
+          <SummaryText />
         </section>
       </summary>
     </section>

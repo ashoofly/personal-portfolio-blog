@@ -32,7 +32,7 @@ export default function Layout(props: LayoutProps) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main>{children}</main>
-      <footer className={`${sectionStyles.footer} ${sectionStyles.dark}`}>
+      <footer className={`${sectionStyles.footer}`}>
         <p className={sectionStyles.footerContent}>&copy; 2022 Angela Hsu</p>
       </footer>  
     </>

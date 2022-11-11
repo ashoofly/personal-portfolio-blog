@@ -1,12 +1,11 @@
-import utilStyles from '../../styles/utils.module.css'
-import { getSortedPostsData, getAllTags } from '../../lib/posts'
-import Link from 'next/link'
-import Date from '../../components/date'
-import { GetStaticProps } from 'next'
-import type { NextPage } from 'next'
-import {
-  Box
-} from '@mui/material';
+import { GetStaticProps } from 'next';
+import type { NextPage } from 'next';
+import Link from 'next/link';
+import { Container, Typography } from '@mui/material';
+import { getSortedPostsData, getAllTags } from '../../lib/posts';
+import Date from '../../components/date';
+import utilStyles from '../../styles/utils.module.css';
+import blogStyles from '../../styles/blog.module.css';
 
 type BlogHomeProps = {
   allPostsData: {
@@ -21,31 +20,31 @@ type BlogHomeProps = {
 
 const BlogHome: NextPage = (props: BlogHomeProps) => {
   const { allPostsData, allTags } = props;
+
   return (
-    <Box sx={{ padding: '20px', display: 'grid', gridTemplateColumns: '2fr 1fr'}}>
-      <Box sx={{ gridColumn: '1 / 1'}}>
-        <main>
-          <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-          <h2 className={utilStyles.headingLg}>Blog</h2>
-          <ul className={utilStyles.list}>
-            {allPostsData.map(({ id, created, updated, title, tags }) => (
-              <li className={utilStyles.listItem} key={id}>
-                <Link href={`/blog/${id}`}>{title}</Link>
-                <br />
-                <small className={utilStyles.lightText}>
-                  created <Date dateString={created} /> 
-                  updated <Date dateString={updated} />
-                </small>
-                <p className="my-0">
-                  {tags}
-                </p>
-              </li>
-            ))}
-          </ul>
-        </section>        
+    <Container className={blogStyles.container}>
+      <main className={blogStyles['main-left']}>
+
+        <Typography variant="h2">Blog</Typography>
+
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, created, updated, title, tags }) => (
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/blog/posts/${id}`}>{title}</Link>
+              <br />
+              <small className={utilStyles.lightText}>
+                created <Date dateString={created} /> 
+                updated <Date dateString={updated} />
+              </small>
+              <p className="my-0">
+                {tags}
+              </p>
+            </li>
+          ))}
+        </ul>
       </main>
-      </Box>
-      <Box sx={{ gridColumn: '2 / 2'}}>
+
+      <nav className={blogStyles['nav-right']}>
         <h2>Tags</h2>
         <ul className={utilStyles.list}>
           {allTags.map((tag) => (
@@ -54,8 +53,8 @@ const BlogHome: NextPage = (props: BlogHomeProps) => {
             </li>
           ))}
         </ul>
-      </Box>
-    </Box>
+      </nav>
+    </Container>
   )
 }
 

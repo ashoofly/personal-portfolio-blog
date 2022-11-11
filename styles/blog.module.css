@@ -1,0 +1,22 @@
+.container {
+  padding: 20px; 
+  min-height: 90vh;
+}
+
+
+@media (min-width: 600px) {
+  .container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .main-left {
+    grid-column: 1 / 1;
+  }
+  
+  
+  .nav-right {
+    grid-column: 2 / 2;
+  }
+}
+
