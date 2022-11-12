@@ -44,7 +44,7 @@ const attributes = [
 
 const textRenderer = (text, i) => {
   return (
-    <span style={{ color: attributes[i].color, fontFamily: "Roboto"}}>{text}</span>
+    <span style={{ color: attributes[i].color}}>{text}</span>
   );
 }
 
@@ -55,59 +55,60 @@ type SummaryProps = {
 export default function Summary(props: SummaryProps) {
   const { content } = props;
   return (
-    <section id="about" className={`${sectionStyles.horizontal} ${indexStyles.intro}`}>
-      <figure style={{
-        display: 'flex',
-        'flex-direction': 'column',
-        'align-items': 'center',
-        'gap': '10px'
-      }}>
-        <Image
-          priority
-          src="/images/profile.jpg"
-          className={utilStyles.borderCircle}
-          height={250}
-          width={250}
-          layout="responsive"
-          alt="Angela Hsu faceshot"
-        />
-        <figcaption style={{
-          'max-width': '250px',
-          'font-size': 'small',
-          'display': 'flex',
-          'text-align': 'center'
-        }}><i>yes, this is the only picture of me,<br />
-          I use it everywhere</i></figcaption>
-      </figure>
-
-      <summary>
-        <header>
-          <Typography variant="h5">
-            Hi, I&apos;m
-          </Typography>
-          <Typography variant="h2" fontWeight="bold">
-            Angela Hsu
-          </Typography>
-        </header>
-        <Box color="text.secondary">
-          <TypingEffect 
-            text={attributes.map(attr => attr.text)} 
-            displayTextRenderer={textRenderer}
-          />
-        </Box>
-        <Box sx={{
+      <section id="about" className={`${sectionStyles.horizontal} ${indexStyles.intro} ${sectionStyles.light}`}>
+        <figure style={{
           display: 'flex',
-          gap: '10px',
-          height: '3rem',
-          alignItems: 'center'
+          'flex-direction': 'column',
+          'align-items': 'center',
+          'gap': '10px'
         }}>
-          <Link href="https://www.linkedin.com/in/ayhsu/" target="_blank" rel="noreferrer"><LinkedInIcon color="action" fontSize="large" /></Link>
-          <Link href="https://github.com/ashoofly" target="_blank" rel="noreferrer"><GitHubIcon color="action" fontSize="large" /></Link>
-        </Box>
-        <section className={sectionStyles.content}>
-          <SummaryText />
-        </section>
-      </summary>
-    </section>
+          <Image
+            priority
+            src="/images/profile.jpg"
+            className={utilStyles.borderCircle}
+            height={250}
+            width={250}
+            layout="responsive"
+            alt="Angela Hsu faceshot"
+          />
+          <figcaption style={{
+            'max-width': '250px',
+            'font-size': '0.8rem',
+            'display': 'flex',
+            'text-align': 'center',
+            'font-family': 'Noto Serif'
+          }}><i>yes, this is the only picture of me,<br />
+            I use it everywhere</i></figcaption>
+        </figure>
+
+        <summary>
+          <header>
+            <Typography variant="h5">
+              Hi, I&apos;m
+            </Typography>
+            <Typography variant="h2" fontWeight="bold">
+              Angela Hsu
+            </Typography>
+          </header>
+          <Box color="text.secondary">
+            <TypingEffect 
+              text={attributes.map(attr => attr.text)} 
+              displayTextRenderer={textRenderer}
+            />
+          </Box>
+          <Box sx={{
+            display: 'flex',
+            gap: '10px',
+            height: '3rem',
+            alignItems: 'center'
+          }}>
+            <Link href="https://www.linkedin.com/in/ayhsu/" target="_blank" rel="noreferrer"><LinkedInIcon color="action" fontSize="large" /></Link>
+            <Link href="https://github.com/ashoofly" target="_blank" rel="noreferrer"><GitHubIcon color="action" fontSize="large" /></Link>
+          </Box>
+          <section className={sectionStyles.content}>
+            <SummaryText />
+          </section>
+        </summary>
+      </section>
   );
 };

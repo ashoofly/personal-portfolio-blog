@@ -4,6 +4,7 @@ const portfolioThemeOptions: ThemeOptions = {
   typography: {
     fontFamily: [
       'IBM Plex Sans JP',
+      'sans-serif',
       'Noto Serif'
     ].join(','),
     h1: {
@@ -46,19 +47,16 @@ const portfolioThemeOptions: ThemeOptions = {
 
     }
   },
-  // palette: {
-  //   primary: {
-  //     main: "#a2bf97",
-  //   },
-  // },
+  palette: {
+    primary: {
+      main: "#79A8A9",
+      contrastText: '#fff8e1',
+      dark: '#263238',
+      light: '#FECD70'
+    },
+  },
   components: {
-  //   MuiAppBar: {
-  //     styleOverrides: {
-  //       colorPrimary: {
-  //         color: "#f7f1da"
-  //       }
-  //     }
-  //   },
+
     MuiButton: {
       styleOverrides: {
         root: {
@@ -73,6 +71,13 @@ const portfolioThemeOptions: ThemeOptions = {
     //     },
     //   },
     // },
+    //   MuiAppBar: {
+    //     styleOverrides: {
+    //       colorPrimary: {
+    //         color: "#f7f1da"
+    //       }
+    //     }
+    //   },
   }
 };
 

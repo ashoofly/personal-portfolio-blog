@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 import { Box, Card, CardContent, CardMedia, Button, Typography } from '@mui/material';
+import sectionStyles from '../styles/section.module.css';
 
 type ExperienceProps = {
   content: {
@@ -17,7 +18,7 @@ type ExperienceProps = {
 const ExperienceCard = ({ content }: ExperienceProps) => {
   const { id, icon, title, years, location, duration = 'N/A', description } = content;
   return (
-    <Card sx={{ boxShadow: 'none' }}>
+    <Card sx={{ boxShadow: 'none' }} className={sectionStyles.light}>
       <CardContent sx={{ display: 'grid', gridTemplateColumns: '2fr 1fr 2fr', justifyItems: 'center', gap: '15px' }}>
         <Box sx={{
           display: 'flex',

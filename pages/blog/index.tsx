@@ -1,21 +1,20 @@
 import { GetStaticProps } from 'next';
 import type { NextPage } from 'next';
 import Link from 'next/link';
-import { Container, Typography, List, ListItem, ListItemText } from '@mui/material';
-// import { ListItem } from '@material-ui/core';
+import { Typography, List, ListItem, ListItemText } from '@mui/material';
 import { getSortedPostsData, getAllTags } from '../../lib/posts';
 import { formatDateString } from '../../components/date';
 import utils from '../../styles/utils.module.css';
-import blog from '../../styles/blog.module.css';
 import BlogLayout from '../../components/layouts/blogLayout';
 
 type BlogHomeProps = {
   allPostsData: {
-    created: string
-    updated?: string
-    title: string
-    id: string
-    tags?: string
+    slug: string,
+    title: string,
+    created: string,
+    updated?: string,
+    tags?: string[],
+    content: string,
   }[], 
   allTags: {
     [tag: string]: number 
@@ -26,13 +25,13 @@ const BlogHome: NextPage = (props: BlogHomeProps) => {
   const { allPostsData, allTags } = props;
 
   return (
-    <BlogLayout allTags={allTags}>
+    <BlogLayout allTags={allTags} home>
       <Typography variant="h2" className={utils.listTitle}>Blog</Typography>
       <List aria-label="blog-posts" className={utils.list}>
-        {allPostsData.map(({ id, created, updated, title }) => (
-          <ListItem className={utils.listItem} key={id}>
+        {allPostsData.map(({ slug, created, updated, title }) => (
+          <ListItem className={utils.listItem} key={slug}>
             <ListItemText 
-              primary={<Link href={`/blog/posts/${id}`}>{title}</Link>} 
+              primary={<Link href={`/blog/posts/${slug}`}>{title}</Link>} 
               secondary={updated ? `${formatDateString(updated)} (updated)` : `${formatDateString(created)}`} 
             />
           </ListItem>

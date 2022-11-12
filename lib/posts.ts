@@ -6,24 +6,25 @@ import html from 'remark-html';
 import { parseISO, compareDesc } from 'date-fns';
 
 
-const postsDirectory = path.join(process.cwd(), 'pages/blog/posts');
+const postsDirectory = path.join(process.cwd(), 'posts');
 
 export function getSortedPostsData(filterByTag: string | null = null, limit: number = -1) {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory);
   const allPostsData = fileNames.reduce((allPosts, fileName) => {
-    const id = fileName.replace(/\.mdx$/, '');
+    const slug = fileName.replace(/\.mdx$/, '');
     const fullPath = path.join(postsDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const matterResult = matter(fileContents);
+    const { data: frontMatter, content } = matter(fileContents);
 
     // filter by tag if param present
     if (filterByTag) {
-      if (matterResult.data.tags.includes(filterByTag)) {
+      if (frontMatter.tags.includes(filterByTag)) {
         return [
           {
-            id,
-            ...matterResult.data,
+            slug,
+            ...frontMatter,
+            content
           },
           ...allPosts,
         ]
@@ -33,8 +34,9 @@ export function getSortedPostsData(filterByTag: string | null = null, limit: num
     } else {
       return [
         {
-          id,
-          ...matterResult.data,
+          slug,
+          ...frontMatter,
+          content
         },
         ...allPosts,
       ]    
@@ -61,42 +63,32 @@ export function getAllPostIds() {
   // [
   //   {
   //     params: {
-  //       id: 'ssg-ssr'
+  //       slug: 'ssg-ssr'
   //     }
   //   },
   //   {
   //     params: {
-  //       id: 'pre-rendering'
+  //       slug: 'pre-rendering'
   //     }
   //   }
   // ]
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.mdx$/, ''),
+        slug: fileName.replace(/\.mdx$/, ''),
       },
     };
   });
 }
 
-export async function getPostData(id: string) {
-  const fullPath = path.join(postsDirectory, `${id}.mdx`);
+export function getPostData(slug: string) {
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const { data: frontMatter, content } = matter(fileContents);
 
-  // Use gray-matter to parse the post metadata section
-  const matterResult = matter(fileContents);
-
-  // Use remark to convert markdown into HTML string
-  const processedContent = await remark()
-    .use(html)
-    .process(matterResult.content);
-  const contentHtml = processedContent.toString();
-
-  // Combine the data with the id and contentHtml
   return {
-    id,
-    contentHtml,
-    ...(matterResult.data as { title: string; created: string; updated: string; tags: string }),
+    frontMatter,
+    content
   };
 }
 

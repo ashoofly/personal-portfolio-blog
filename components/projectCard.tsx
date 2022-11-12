@@ -2,6 +2,7 @@ import { Box, Typography, Link } from '@mui/material';
 import Image from 'next/image';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import PublicIcon from '@mui/icons-material/Public';
+import BadgeArray from './badgeArray';
 
 type ProjectCardProps = {
   details: {
@@ -11,13 +12,16 @@ type ProjectCardProps = {
     image: string,
     demo: string,
     source: string,
-    tech: string[],
+    skills: {
+      color: string,
+      text: string,
+    }[],
     description: string
   }
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
-  const { id, title, subtitle, image, demo, source, tech, description } = props.details;
+  const { id, title, subtitle, image, demo, source, skills, description } = props.details;
   return(
     <Box sx={{
       display: 'grid',
@@ -37,14 +41,14 @@ export default function ProjectCard(props: ProjectCardProps) {
         />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: '900px'}}>
-        <Typography variant="h4" >
+        <Typography variant="h5" >
           <b>{title}</b>
         </Typography>
-        <Typography variant="h5" color="text.secondary">
+        <Typography variant="h6" color="text.secondary">
           <b>{subtitle}</b>
         </Typography>
         <Typography variant="h6">
-          <b>Tech: </b>{tech.map(t => `${t}, `)}
+          <BadgeArray skills={skills} />
         </Typography>
         <Box sx={{ display: 'flex', gap: '20px', 'alignItems': 'center'}}>
           <Box sx={{ display: 'flex', gap: '5px', 'alignItems': 'center'}}>

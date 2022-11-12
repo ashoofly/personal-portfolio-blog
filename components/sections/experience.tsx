@@ -94,7 +94,7 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className={`${sectionStyles.vertical}`}>
+    <section id="experience" className={`${sectionStyles.vertical} ${sectionStyles.light}`}>
       <header style={{ marginBottom: "20px" }}>
         <Typography component="h2" variant="h3" fontWeight="bold" align="center">
               Experience

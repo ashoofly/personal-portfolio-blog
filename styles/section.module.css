@@ -19,6 +19,8 @@
   display: flex;
   justify-content: center;
   padding: 20px;
+  background-color: #34515e;
+  color: #eeeecb;
 }
 
 .footerContent {
@@ -30,11 +32,15 @@
 }
 
 .dark {
-  background-color: rgb(38, 100, 38);
-  color: #eeeecb;
+  background-color: var(--primary-dark);
+  color: var(--primary-contrastText);
 }
 
 .light {
-  background-color: #a2bf97;
-  color: #054729
+  background-color: var(--primary-light);
+  color: var(--primary-dark);
+}
+
+.third {
+  background-color: var(--third-main);
 }

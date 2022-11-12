@@ -5,23 +5,26 @@ import Date from '../../components/date'
 import { GetStaticProps } from 'next'
 import type { NextPage } from 'next'
 import {
-  Box, Typography
+  Box, Typography, List, ListItem, ListItemText
 } from '@mui/material';
+import { formatDateString } from '../date';
+import utils from '../../styles/utils.module.css';
+import sectionStyles from '../../styles/section.module.css';
 
 type BlogPreviewProps = {
   posts: {
     created: string
-    updated: string
+    updated?: string
     title: string
-    id: string
-    tags: string
+    slug: string
+    tags?: string
   }[]
 }
 
 export default function BlogPreview(props: BlogPreviewProps) {
   const { posts } = props;
   return (
-    <Box sx={{ padding: '50px 80px'}}>
+    <Box sx={{ padding: '50px 80px'}} className={sectionStyles.third}>
       <header>
         <Typography component="h2" variant="h3" fontWeight="bold" align="center">
               Blog
@@ -31,20 +34,16 @@ export default function BlogPreview(props: BlogPreviewProps) {
         </Typography>
       </header>
       <main style={{ paddingTop: '50px'}}>
-        <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <ul className={utilStyles.list}>
-          {posts.map(({ id, created, updated, title, tags }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href={`/blog/${id}`}>{title}</Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                created <Date dateString={created} /> 
-                updated <Date dateString={updated} />
-              </small>
-            </li>
+        <List aria-label="blog-posts" className={utils.list}>
+          {posts.map(({ slug, created, updated, title }) => (
+            <ListItem className={utils.listItem} key={slug}>
+              <ListItemText 
+                primary={<Link href={`/blog/posts/${slug}`}>{title}</Link>} 
+                secondary={updated ? `${formatDateString(updated)} (updated)` : `${formatDateString(created)}`} 
+              />
+            </ListItem>
           ))}
-        </ul>
-      </section>        
+        </List>     
     </main>
     </Box>
   )

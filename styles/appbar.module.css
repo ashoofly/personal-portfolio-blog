@@ -1,0 +1,15 @@
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  background-color: var(--secondary-main);
+  color: var(--primary-contrastText);
+}
+
+.link {
+  color: var(--secondary-contrastText);
+  text-decoration: none;
+}
+
+.link:hover {
+  /* color: #c1d5e0; */
+}

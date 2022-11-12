@@ -1,21 +1,33 @@
 .container {
+  margin-top: 3rem;
   padding: 20px; 
-  min-height: 90vh;
+  background-color: #fff8e1;
 }
 
 .tagTitle {
   padding: 20px 0 20px 0;
 }
 
+.backToHome {
+  margin-bottom: 2rem;
+}
+
+.dateLine {
+  font-size: 0.9rem;
+}
+
 
 @media (min-width: 600px) {
   .container {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
+    gap: 10rem;
   }
 
   .main-left {
     grid-column: 1 / 1;
+    margin-bottom: 5rem;
+    min-height: 90vh;
   }
   
   
