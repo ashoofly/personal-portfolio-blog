@@ -6,7 +6,7 @@ import { Box, Typography } from '@mui/material';
 
 
 import utIcon from '../../public/images/ut-icon.png';
-import arlIcon from '../../public/images/arl-icon.jpg';
+import arlIcon from '../../public/images/arl-icon.png';
 import optarosIcon from '../../public/images/optaros-icon.png';
 import pingIcon from '../../public/images/ping.png';
 import earthIcon from '../../public/images/earth.png';
@@ -107,7 +107,7 @@ export default function Experience() {
         {experienceData.map((experience, index) => (
           <Box key={experience.id}>
             <ExperienceCard content={experience} />
-            <Box sx={ index < experienceData.length-1 ? {height: '150px', width: '0px', border: '2px solid #e4e4e4', margin: 'auto', backgroundColor: '#e4e4e4'} : {}}></Box>
+            <Box sx={ index < experienceData.length-1 ? {height: '150px', width: '0px', border: `2px solid #9e9e9e`, margin: 'auto', backgroundColor: '#9e9e9e'} : {}}></Box>
           </Box>
         ))}
       </Box>

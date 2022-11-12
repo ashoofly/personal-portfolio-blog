@@ -43,4 +43,15 @@
 
 .third {
   background-color: var(--third-main);
+  color: var(--primary-contrastText);
+
+}
+
+.third a {
+  color: var(--primary-contrastText);
+
+}
+
+.third a:hover {
+  color: #bbdefb;
 }

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  gap: 5px;
+  padding-left: 0;
+  margin: 5px 0;
+  min-width: 0;
+  max-width: 500px;
+}
+
+.list {
+  list-style: none;
+}
+
+.listItem {
+  display: inline-block;
+
+}
+
+.chip {
+  background-color: var(--primary-dark);
+  font-weight: bold;
+  font-size: 0.9rem;
+  border-radius: 6px;
+
+}

@@ -1,5 +1,5 @@
 .text {
-  color: rgb(168, 132, 168);
+  color: var(--secondary-main);
   font-size: 24px;
   font-weight: bold;
 }

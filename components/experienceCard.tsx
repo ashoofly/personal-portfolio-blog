@@ -19,7 +19,7 @@ const ExperienceCard = ({ content }: ExperienceProps) => {
   const { id, icon, title, years, location, duration = 'N/A', description } = content;
   return (
     <Card sx={{ boxShadow: 'none' }} className={sectionStyles.light}>
-      <CardContent sx={{ display: 'grid', gridTemplateColumns: '2fr 1fr 2fr', justifyItems: 'center', gap: '15px' }}>
+      <CardContent sx={{ display: 'grid', gridTemplateColumns: '2.5fr 1fr 2.5fr', justifyItems: 'center', gap: '15px' }}>
         <Box sx={{
           display: 'flex',
           justifyContent: 'center',

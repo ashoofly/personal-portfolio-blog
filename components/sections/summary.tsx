@@ -11,34 +11,31 @@ import TypingEffect from '../typingEffect';
 import Link from '@mui/material/Link';
 
 import SummaryText from '../content/summaryText.mdx';
+import { orange, lightBlue, deepPurple, pink, blue, indigo, teal, green, red, blueGrey, amber, purple, brown, deepOrange } from '@mui/material/colors';
 
 const attributes = [
   {
     id: 1,
-    text: 'a curious learner',
-    color: 'orange'
+    text: 'a professional problem-solver',
+    color: indigo[400]
   },
   {
     id: 2,
-    text: 'a professional problem-solver',
-    color: 'blue'
+    text: 'a curious learner',
+    color: orange['A700']
   },
   {
     id: 3,
     text: 'an empathetic listener',
-    color: 'purple'
+    color: deepPurple[400]
   },  {
     id: 4,
     text: 'a lifelong tree hugger',
-    color: 'green'
-  },  {
+    color: green[500]
+  }, {
     id: 5,
-    text: 'a curious learner',
-    color: 'purple'
-  },  {
-    id: 6,
     text: 'a committed team member',
-    color: 'brown'
+    color: pink[400]
   },
 ]
 
@@ -71,13 +68,7 @@ export default function Summary(props: SummaryProps) {
             layout="responsive"
             alt="Angela Hsu faceshot"
           />
-          <figcaption style={{
-            'max-width': '250px',
-            'font-size': '0.8rem',
-            'display': 'flex',
-            'text-align': 'center',
-            'font-family': 'Noto Serif'
-          }}><i>yes, this is the only picture of me,<br />
+          <figcaption className={utilStyles.figcaption}><i>yes, this is the only picture of me,<br />
             I use it everywhere</i></figcaption>
         </figure>
 

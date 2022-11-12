@@ -52,8 +52,11 @@ const portfolioThemeOptions: ThemeOptions = {
       main: "#79A8A9",
       contrastText: '#fff8e1',
       dark: '#263238',
-      light: '#FECD70'
+      light: '#D5EBF2'
     },
+    secondary: {
+      main: "#6CA3B3",
+    }
   },
   components: {
 

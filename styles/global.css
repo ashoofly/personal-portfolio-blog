@@ -6,7 +6,7 @@
   --primary-contrastText: #E8DED2;
   --primary-main: #79A8A9;
   --primary-dark: #263238;
-  --primary-light: #CBAF87;
+  --primary-light: #E8DED2;
   --secondary-main: #6CA3B3;
   --secondary-contrastText: #2B4148;
   --third-main: #56828F;
@@ -27,7 +27,7 @@ body {
   line-height: 1.6;
   font-size: 18px;
   background-color: var(--primary-light);
-  color: var(--primary-contrastText);
+  color: var(--primary-dark);
 }
 
 
@@ -36,8 +36,7 @@ body {
 }
 
 a {
-  /* color: #0070f3; */
-  text-decoration: none;
+  color: var(--primary-contrastText);
 }
 
 a:hover {
