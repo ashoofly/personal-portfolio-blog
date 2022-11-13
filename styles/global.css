@@ -3,14 +3,16 @@
    CssVarsProvider (https://mui.com/material-ui/experimental-api/css-theme-variables/usage/)
 */
 :root {
-  --primary-contrastText: #E8DED2;
+  --primary-contrastText: #e5d8c8;
   --primary-main: #79A8A9;
   --primary-dark: #263238;
-  --primary-light: #E8DED2;
+  --primary-light: #e5d8c8;
   --secondary-main: #6CA3B3;
   --secondary-contrastText: #2B4148;
   --third-main: #56828F;
+  --third-contrastText: #CAEEFE;
 }
+/* --primary-light: #E8DED2; */
 
 html {
   scroll-behavior: smooth;

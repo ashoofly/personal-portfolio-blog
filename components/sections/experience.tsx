@@ -11,6 +11,11 @@ import optarosIcon from '../../public/images/optaros-icon.png';
 import pingIcon from '../../public/images/ping.png';
 import earthIcon from '../../public/images/earth.png';
 
+import UTDescription from '../content/experience-utexas.mdx';
+import ARLDescription from '../content/experience-arl.mdx';
+import OptarosDescription from '../content/experience-optaros.mdx';
+import PingDescription from '../content/experience-ping.mdx';
+
 export default function Experience() {
 
   const experienceData = [
@@ -28,7 +33,7 @@ export default function Experience() {
       years: '2012-2015',
       location: 'Austin, TX',
       duration: '2 years',
-      description: 'Made a career switch I graduated from the University of Texas at Austin with a second Bachelor\'s in Computer Science. (My first Bachelor\'s was in English many years prior.)',
+      description: <UTDescription />,
     },
     {
       id: 2,
@@ -44,7 +49,7 @@ export default function Experience() {
       location: 'Austin, TX',
       years: '2013-2014',
       duration: '1.5 years',
-      description: 'While I was studying computer science, I worked at ARL in the Space & Geophysics department, where I collaborated with physicists and engineers to help process geospatial data and automate distribution to agencies around the world. Mostly used Python here (though there was some embedded C++ in the survey nodes).',
+      description: <ARLDescription />,
     },
     {
       id: 3,
@@ -59,7 +64,7 @@ export default function Experience() {
       location: 'Austin, TX',
       years: '2015-2017',
       duration: '2 years',
-      description: 'After graduating, I worked at a small e-commerce consulting company where I developed an Android app for one client and migrated a rapidly-growing local client\'s ecommerce site to the Salesforce Cloud platform.',
+      description: <OptarosDescription />,
     },
     {
       id: 4,
@@ -74,7 +79,7 @@ export default function Experience() {
       location: 'Austin, TX and Remote from Boulder, CO',
       years: '2017-2022',
       duration: '5 years',
-      description: 'Did a lot of things - quality, DevOps, senior software engineer to manager',
+      description: <PingDescription />,
     },
     {
       id: 5,

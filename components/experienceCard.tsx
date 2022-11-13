@@ -2,6 +2,7 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Box, Card, CardContent, CardMedia, Button, Typography } from '@mui/material';
 import sectionStyles from '../styles/section.module.css';
+import experience from '../styles/experiences.module.css';
 
 type ExperienceProps = {
   content: {
@@ -38,11 +39,10 @@ const ExperienceCard = ({ content }: ExperienceProps) => {
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             {location}
           </Typography>
-          <Typography variant="body2">
+          <Box className={experience.description}>
             {description}
-          </Typography>
+          </Box>
         </Box>
-
       </CardContent>
     </Card>
   );

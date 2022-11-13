@@ -57,9 +57,9 @@
 
 .figcaption a {
   text-decoration: none;
-  color: var(--primary-contrastText);
+  color: var(--secondary-main);
 }
 
 .figcaption a:hover {
-  color: var(--secondary-main);
+  color: var(--third-contrastText);
 }

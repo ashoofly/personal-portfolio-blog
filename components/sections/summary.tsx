@@ -61,12 +61,13 @@ export default function Summary(props: SummaryProps) {
         }}>
           <Image
             priority
-            src="/images/profile.jpg"
-            className={utilStyles.borderCircle}
+            src="/images/profile.png"
+            // className={utilStyles.borderCircle}
             height={250}
             width={250}
-            layout="responsive"
+            // layout="responsive"
             alt="Angela Hsu faceshot"
+            style={{ objectFit: "contain" }}
           />
           <figcaption className={utilStyles.figcaption}><i>yes, this is the only picture of me,<br />
             I use it everywhere</i></figcaption>

@@ -1,0 +1,15 @@
+<small>*Note: Anonymous individual play allowed soon! For now, you still need to authenticate to play.</small> 
+
+This project stemmed from me taking screenshots of the NYTimes crossword app 
+to ask my friend if she knew a 4-letter word that would fit the clue 
+*"‘Voulez-vous coucher ___ moi?’ (lyric in a 1975 #1 hit)”* and other such French clues.
+It made me want to prove my theory that no matter how bad all your friends thought they were at
+crossword puzzles individually, all their combined, diverse perspectives together could knock out 
+the hardest Saturday puzzles no problem. Thus, the live, collaborative crossword puzzle was born. 
+
+I started with a **React** front-end, 
+and realized I needed better state management so later added **Redux**. For tracking friends' 
+edits and cursors in real-time, I used the **WebSocket API** with socket.io. For a quick way
+to verify one was playing with one's actual friends, I added Google **authentication**. I also used 
+Firebase's **Real-Time Database** to persist weekly games and Firebase **Cloud Functions** to pull 
+the crossword puzzle daily.  

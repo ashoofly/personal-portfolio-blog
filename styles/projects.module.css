@@ -21,6 +21,18 @@
   border-radius: 50%;
 }
 
+.description {
+  color: var(--primary-light);
+}
+
+.detailLink {
+  text-decoration: none;
+  color: var(--secondary-main);
+}
+
+.detailLink:hover {
+  color: var(--third-contrastText);
+}
 .details {
   display: flex;
   flex-direction: column;
@@ -40,4 +52,10 @@
   display: flex;
   gap: 5px; 
   align-items: center;
+}
+
+.dates {
+  /* font-family: 'Noto Serif', serif;
+  font-style: italic; */
+  font-size: 90%;
 }

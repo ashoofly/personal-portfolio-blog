@@ -8,22 +8,24 @@ import projects from '../../styles/projects.module.css';
 import Link from '@mui/material/Link';
 
 import ProjectCard from '../projectCard';
-import { orange, lightBlue, deepPurple, pink, blue, indigo, teal, green, red, blueGrey, amber, cyan } from '@mui/material/colors';
+import { orange, lightBlue, deepPurple, pink, blue, indigo, teal, green, red, blueGrey, amber, cyan, purple, lightGreen, deepOrange } from '@mui/material/colors';
 
 import artistIcon from '../../public/images/artist.png';
 import crosswordIcon from '../../public/images/crossword.png';
 import odinIcon from '../../public/images/odin.png';
 
-import ProjectDescription from '../content/project-portfolio.mdx';
+import PortfolioDescription from '../content/project-portfolio.mdx';
+import CrosswordDescription from '../content/project-crossword.mdx';
+import OdinDescription from '../content/project-odin.mdx';
 
 const projectItems = [
   {
     id: 1,
     title: 'Portfolio Blog Website',
     subtitle: 'React Performance Framework',
+    dates: 'Nov 2022',
     image: artistIcon,
-    creditUrl: 'https://www.freepik.com/free-vector/male-artist-painter-cartoon-illustration-people-profession-icon-concept_10244976.htm',
-    creditText: `catalyststuff on Freepik`,
+    imageCredit: `<p>Art by <a href='https://www.freepik.com/free-vector/male-artist-painter-cartoon-illustration-people-profession-icon-concept_10244976.htm'>catalyststuff</a><br /> on Freepik</p>`,
     demo: 'this site!',
     source: 'https://github.com/ashoofly/personal-portfolio-blog',
     skills: [
@@ -48,35 +50,37 @@ const projectItems = [
         color: green[600],
       },
     ],         
-    description: <ProjectDescription />
+    description: <PortfolioDescription />
   },
   {
     id: 2,
     title: 'Crossword with Me',
     subtitle: 'Full-Stack Client-Server App',
+    dates: 'Jul 2022 - Oct 2022',
     image: crosswordIcon,
+    imageCredit: `<p>Screenshot of <a href='https://wwww.crosswordwith.me'>crosswordwith.me</a><br /></p>`,
     demo: 'https://crosswordwith.me',
     source: 'https://github.com/ashoofly/crossword-with-me',
     skills: [
       {
         text: 'React',
-        color: blue[500],
+        color: cyan[500],
       },
       {
         text: 'Redux',
-        color: indigo[300],
+        color: indigo[200],
       },    
       {
         text: 'WebSockets',
-        color: teal[500],
+        color: teal[300],
       },    
       {
         text: 'NodeJS',
-        color: red[500],
+        color: red[400],
       },      
       {
         text: 'Express',
-        color: deepPurple[300],
+        color: blue[400],
       },  
       {
         text: 'Firebase',
@@ -84,35 +88,36 @@ const projectItems = [
       },
       {
         text: 'GCP',
-        color: blue[500],
+        color: purple[300],
       },
       {
         text: 'NoSQL',
-        color: green[600],
+        color: lightBlue[500],
       },
       {
         text: 'Authn',
-        color: red[900],
+        color: deepOrange[300],
       },
       {
         text: 'Heroku',
-        color: cyan[500],
+        color: blueGrey[300],
       }
     ],     
-    description: 'This was my first end-to-end web app project, from conceptualization to design to execution, \
-    and from UI to WebSocket communication all the way down to the NoSQL database.'
+    description: <CrosswordDescription />
   },
   {
     id: 3,
     title: 'Odin & Scrimba Projects',
     subtitle: 'Front-end Foundations',
+    dates: 'Feb 2022 - Jun 2022',
     image: odinIcon,
-    demo: 'https://ashoofly.github.io/odin-project/',
+    imageCredit: `<p>Art by <a href='https://dribbble.com/shots/11117717-The-Odin-Project-Website-Redesign'>Ada Chiu</a><br /> for The Odin Project</p>`,
+    demo: 'links below',
     source: 'https://github.com/ashoofly/odin-project',
     skills: [
       {
         text: 'HTML',
-        color: green[900],
+        color: pink[500],
       },
       {
         text: 'CSS',
@@ -120,11 +125,10 @@ const projectItems = [
       },    
       {
         text: 'JavaScript',
-        color: blueGrey[500],
+        color: green[500],
       },    
     ],        
-    description: 'Check out my first baby projects: a library, rock, paper, scissors game, landing page, \
-    travel journal, admin dashboard, signup form.'
+    description: <OdinDescription />
   }
 ]
 

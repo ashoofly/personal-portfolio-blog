@@ -12,21 +12,21 @@ type ProjectCardProps = {
     id: number,
     title: string,
     subtitle: string,
+    dates: string,
     image: string,
     demo: string,
     source: string,
-    creditText?: string,
-    creditUrl?: string,
+    imageCredit?: string,
     skills: {
       color: string,
       text: string,
     }[],
-    description: string
+    description: JSX.Element
   }
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
-  const { title, subtitle, image, demo, source, skills, description, creditText, creditUrl } = props.details;
+  const { title, subtitle, dates, image, demo, source, skills, description, imageCredit } = props.details;
   return(
     <Box className={project.card}>
       <Box>
@@ -35,8 +35,7 @@ export default function ProjectCard(props: ProjectCardProps) {
           alt=""
           className={project.icon}
         />
-        {creditUrl && <figcaption className={utils.figcaption}>
-          Image by <Link href={creditUrl}>{creditText}</Link></figcaption>}
+        {imageCredit && <figcaption className={utils.figcaption} dangerouslySetInnerHTML={{__html: imageCredit}} />}
       </Box>
       <Box className={project.details}>
         <Typography variant="h6" color="primary.contrastText">
@@ -44,6 +43,9 @@ export default function ProjectCard(props: ProjectCardProps) {
         </Typography>
         <Typography color="secondary.main">
           <b>{subtitle}</b>
+        </Typography>
+        <Typography variant="subtitle1" className={project.dates}>
+          {dates}
         </Typography>
         <Typography variant="h6">
           <BadgeArray skills={skills} />
@@ -54,7 +56,7 @@ export default function ProjectCard(props: ProjectCardProps) {
               <b>Demo:</b>
             </Typography>
             {demo.startsWith('http') ? 
-              <Link color="text.secondary" href={demo} className={project.link}>
+              <Link color="text.secondary" href={demo} className={project.link} target="_blank" rel="noopener">
                 <PublicIcon color="primary" />
               </Link> 
                 : 
@@ -64,14 +66,12 @@ export default function ProjectCard(props: ProjectCardProps) {
             <Typography variant="subtitle2">
             <b>Source:</b>
             </Typography>
-            <Link color="text.secondary" href={source} className={project.link}>
+            <Link color="text.secondary" href={source} className={project.link} target="_blank" rel="noopener">
               <GitHubIcon color="primary" />
             </Link>
           </Box>
         </Box>
-        <Typography variant="body1">
-          {description}
-        </Typography>
+        {description}
       </Box>
     </Box>
   );
