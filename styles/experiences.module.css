@@ -1,3 +1,79 @@
 .description {
   font-size: 90%;
 }
+
+.link {
+  font-weight: bold;
+  color: var(--third-main);
+}
+
+.link:hover {
+  color: var(--secondary-main);
+}
+
+.card {
+  box-shadow: none;
+}
+
+.cardContent {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr 2.5fr;
+  justify-items: center;
+  gap: 15px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-column: 2 / 2;
+}
+
+.right {
+  grid-column: 3 / 3;
+  grid-row: 1 / 1;
+  max-width: 400px;
+  justify-self: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  max-width: 400px;
+  justify-self: right;
+}
+
+.years {
+  font-size: 14px;
+}
+
+.location {
+  margin-bottom: 12px;
+}
+
+.svgFilter{
+  filter: invert(81%) sepia(5%) saturate(1056%) hue-rotate(156deg) brightness(79%) contrast(88%);
+}
+
+.timeline {
+  height: 150px;
+  width: 0px;
+  border: 2px solid #9e9e9e;
+  margin: auto;
+  background-color: #9e9e9e;
+}
+
+.halfTimeline {
+  height: 50px;
+  width: 0px;
+  border: 2px solid #9e9e9e;
+  margin: auto;
+  background-color: #9e9e9e;
+}

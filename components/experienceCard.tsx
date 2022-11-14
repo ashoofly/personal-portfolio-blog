@@ -12,36 +12,33 @@ type ExperienceProps = {
     years: string,
     location: string,
     duration?: string,
-    description: string,
+    description?: JSX.Element,
+    phases?: {
+      icon: JSX.Element,
+      summary: JSX.Element
+    }[]
   }
 }
 
 const ExperienceCard = ({ content }: ExperienceProps) => {
-  const { id, icon, title, years, location, duration = 'N/A', description } = content;
+  const { id, icon, title, years, location, description } = content;
   return (
-    <Card sx={{ boxShadow: 'none' }} className={sectionStyles.light}>
-      <CardContent sx={{ display: 'grid', gridTemplateColumns: '2.5fr 1fr 2.5fr', justifyItems: 'center', gap: '15px' }}>
-        <Box sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gridColumn: '2 / 2',
-          // maxWidth: '200px',
-        }}>{icon}</Box>
-
-        <Box sx={ (id % 2 === 0) ? { gridColumn: '3 / 3', gridRow: '1 / 1', maxWidth: '400px', justifySelf: 'left' } : { gridColumn: '1 / 1', gridRow: '1 / 1', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', textAlign: 'right', maxWidth: '400px', justifySelf: 'right' }}>
-          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+    <Card className={`${experience.card} ${sectionStyles.light}`}>
+      <CardContent className={experience.cardContent}>
+        <Box className={experience.icon}>{icon}</Box>
+        <Box className={(id % 2 === 0) ? experience.right : experience.left}>
+          <Typography className={experience.years} color="text.secondary" gutterBottom>
             {years}
           </Typography>
           <Typography variant="h5" component="div">
             {title}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          <Typography className={experience.location} color="text.secondary">
             {location}
           </Typography>
-          <Box className={experience.description}>
+          {description && <Box className={experience.description}>
             {description}
-          </Box>
+          </Box>}
         </Box>
       </CardContent>
     </Card>

@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import utilStyles from '../../styles/utils.module.css';
 import ExperienceCard from '../experienceCard';
+import SubExperienceCard from '../subExperienceCard';
 import sectionStyles from '../../styles/section.module.css';
+import experienceStyles from '../../styles/experiences.module.css';
 import { Box, Typography } from '@mui/material';
 
 
@@ -14,7 +16,18 @@ import earthIcon from '../../public/images/earth.png';
 import UTDescription from '../content/experience-utexas.mdx';
 import ARLDescription from '../content/experience-arl.mdx';
 import OptarosDescription from '../content/experience-optaros.mdx';
-import PingDescription from '../content/experience-ping.mdx';
+import PingDescription from '../content/experience-ping-intro.mdx';
+import FutureDescription from '../content/experience-future.mdx';
+
+import PingQuality from '../content/experience-ping-quality.mdx';
+import PingDevTools from '../content/experience-ping-devtools.mdx';
+import PingLeader from '../content/experience-ping-leader.mdx';
+
+import testingIcon from '../../public/images/testing.png';
+import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
+import leaderIcon from '../../public/images/leader.png';
+// <a target="_blank" href="https://icons8.com/icon/58019/leader">Leader</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+
 
 export default function Experience() {
 
@@ -75,11 +88,57 @@ export default function Experience() {
           style={{ objectFit: 'contain' }}
         />
       ),
+      phases: [
+        {
+          id: 1,
+          icon: (
+            <Image
+            src="/images/gears.svg"
+            width={100}
+            height={100}
+            alt="automated testing"
+            style={{ objectFit: 'contain' }}
+            className={experienceStyles.svgFilter}
+          />
+          ),
+          years: '2017-2019',
+          summary: <PingQuality />
+        },
+        {
+          id: 2,
+          icon: (
+            <Image
+            src="/images/devtools.svg"
+            width={90}
+            height={90}
+            alt="toolbox"
+            style={{ objectFit: 'contain' }}
+            className={experienceStyles.svgFilter}
+          />
+          ),
+          years: '2019-2021',
+          summary: <PingDevTools />
+        },
+        {
+          id: 3,
+          icon: (
+            <Image
+            src="/images/leader.svg"
+            width={90}
+            height={90}
+            alt="team silhouettes"
+            style={{ objectFit: 'contain' }}
+            className={experienceStyles.svgFilter}
+          />
+          ),
+          years: '2021-2022',
+          summary: <PingLeader />
+        },
+      ],
       title: 'Ping Identity',
       location: 'Austin, TX and Remote from Boulder, CO',
       years: '2017-2022',
       duration: '5 years',
-      description: <PingDescription />,
     },
     {
       id: 5,
@@ -91,10 +150,10 @@ export default function Experience() {
           style={{ objectFit: 'contain' }}
         />
       ),
-      title: 'Learning web development & career shift to climate tech',
+      title: 'Career Shift to Full-Stack Climate or Civic Tech',
       location: 'Boulder, CO',
       years: 'July 2022 - Present',
-      description: 'Taking some time to get more into the front-end design aspect of the tech field',
+      description: <FutureDescription />,
     },
   ];
 
@@ -112,7 +171,9 @@ export default function Experience() {
         {experienceData.map((experience, index) => (
           <Box key={experience.id}>
             <ExperienceCard content={experience} />
-            <Box sx={ index < experienceData.length-1 ? {height: '150px', width: '0px', border: `2px solid #9e9e9e`, margin: 'auto', backgroundColor: '#9e9e9e'} : {}}></Box>
+            {(experience.phases && index < experienceData.length-1) && <Box className={experienceStyles.halfTimeline}></Box>}
+            {experience.phases && <SubExperienceCard phases={experience.phases} />}
+            {(index < experienceData.length-1) && <Box className={experienceStyles.timeline}></Box>}
           </Box>
         ))}
       </Box>

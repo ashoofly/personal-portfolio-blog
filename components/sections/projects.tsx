@@ -111,7 +111,7 @@ const projectItems = [
     subtitle: 'Front-end Foundations',
     dates: 'Feb 2022 - Jun 2022',
     image: odinIcon,
-    imageCredit: `<p>Art by <a href='https://dribbble.com/shots/11117717-The-Odin-Project-Website-Redesign'>Ada Chiu</a><br /> for The Odin Project</p>`,
+    imageCredit: `<p>Art by <a href='https://dribbble.com/shots/11117717-The-Odin-Project-Website-Redesign'>Ada Chiu</a><br /> for <a href="https://www.theodinproject.com/">The Odin Project</a></p>`,
     demo: 'links below',
     source: 'https://github.com/ashoofly/odin-project',
     skills: [

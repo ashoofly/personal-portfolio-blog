@@ -38,15 +38,15 @@ body {
 }
 
 a {
-  color: var(--primary-contrastText);
+  color: var(--secondary-main);
+  text-decoration: none;
 }
 
 a:hover {
-  /* text-decoration: underline; */
+  color: var(--third-contrastText);
 }
 
 img {
   max-width: 100%;
   display: block;
 }
-
