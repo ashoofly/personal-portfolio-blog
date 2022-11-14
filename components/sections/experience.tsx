@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import utilStyles from '../../styles/utils.module.css';
 import ExperienceCard from '../experienceCard';
 import SubExperienceCard from '../subExperienceCard';
@@ -28,139 +30,137 @@ import HomeRepairServiceIcon from '@mui/icons-material/HomeRepairService';
 import leaderIcon from '../../public/images/leader.png';
 // <a target="_blank" href="https://icons8.com/icon/58019/leader">Leader</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
 
+const experienceData = [
+  {
+    id: 1,
+    icon: (
+      <Image
+        src={utIcon}
+        alt="University of Texas logo"
+        className={experienceStyles.img}
+      />
+    ),
+    title: 'BS in Computer Science',
+    years: '2012-2015',
+    location: 'Austin, TX',
+    duration: '2 years',
+    description: <UTDescription />,
+  },
+  {
+    id: 2,
+    icon: (
+      <Image
+        src={arlIcon}
+        alt="ARL logo"
+        className={experienceStyles.img}
+      />
+    ),
+    title: 'Applied Research Labs',
+    location: 'Austin, TX',
+    years: '2013-2014',
+    duration: '1.5 years',
+    description: <ARLDescription />,
+  },
+  {
+    id: 3,
+    icon: (
+      <Image
+        src={optarosIcon}
+        alt="Venn diagram figure with Optaros in the middle and Strategy, Design, and Development circles overlapping"
+        className={experienceStyles.img}
+      />
+    ),
+    title: 'Optaros (now MRM)',
+    location: 'Austin, TX',
+    years: '2015-2017',
+    duration: '2 years',
+    description: <OptarosDescription />,
+  },
+  {
+    id: 4,
+    icon: (
+      <Image
+        src={pingIcon}
+        alt="Ping Identity icon"
+        className={experienceStyles.img}
+      />
+    ),
+    phases: [
+      {
+        id: 1,
+        icon: (
+          <Image
+          src="/images/gears.svg"
+          width={100}
+          height={100}
+          alt="automated testing"
+          style={{ objectFit: 'contain' }}
+          className={experienceStyles.svgFilter}
+        />
+        ),
+        years: '2017-2019',
+        summary: <PingQuality />
+      },
+      {
+        id: 2,
+        icon: (
+          <Image
+          src="/images/devtools.svg"
+          width={90}
+          height={90}
+          alt="toolbox"
+          style={{ objectFit: 'contain' }}
+          className={experienceStyles.svgFilter}
+        />
+        ),
+        years: '2019-2021',
+        summary: <PingDevTools />
+      },
+      {
+        id: 3,
+        icon: (
+          <Image
+          src="/images/leader.svg"
+          width={90}
+          height={90}
+          alt="team silhouettes"
+          style={{ objectFit: 'contain' }}
+          className={experienceStyles.svgFilter}
+        />
+        ),
+        years: '2021-2022',
+        summary: <PingLeader />
+      },
+    ],
+    title: 'Ping Identity',
+    location: 'Austin, TX and Remote from Boulder, CO',
+    years: '2017-2022',
+    duration: '5 years',
+  },
+  {
+    id: 5,
+    icon: (
+      <Image
+        src={earthIcon}
+        alt="Web and climate image"
+        className={experienceStyles.img}
+      />
+    ),
+    title: 'Career Shift to Full-Stack Climate or Civic Tech',
+    location: 'Boulder, CO',
+    years: 'July 2022 - Present',
+    description: <FutureDescription />,
+  },
+];
 
 export default function Experience() {
-
-  const experienceData = [
-    {
-      id: 1,
-      icon: (
-        <Image
-          src={utIcon}
-          className={utilStyles.borderCircle}
-          alt="University of Texas logo"
-          style={{ objectFit: 'contain' }}
-        />
-      ),
-      title: 'BS in Computer Science',
-      years: '2012-2015',
-      location: 'Austin, TX',
-      duration: '2 years',
-      description: <UTDescription />,
-    },
-    {
-      id: 2,
-      icon: (
-        <Image
-          src={arlIcon}
-          className={utilStyles.borderCircle}
-          alt="ARL logo"
-          style={{ objectFit: 'contain' }}
-        />
-      ),
-      title: 'Applied Research Labs',
-      location: 'Austin, TX',
-      years: '2013-2014',
-      duration: '1.5 years',
-      description: <ARLDescription />,
-    },
-    {
-      id: 3,
-      icon: (
-        <Image
-          src={optarosIcon}
-          alt="Venn diagram figure with Optaros in the middle and Strategy, Design, and Development circles overlapping"
-          style={{ objectFit: 'contain' }}
-        />
-      ),
-      title: 'Optaros (now MRM)',
-      location: 'Austin, TX',
-      years: '2015-2017',
-      duration: '2 years',
-      description: <OptarosDescription />,
-    },
-    {
-      id: 4,
-      icon: (
-        <Image
-          src={pingIcon}
-          alt="Ping Identity icon"
-          style={{ objectFit: 'contain' }}
-        />
-      ),
-      phases: [
-        {
-          id: 1,
-          icon: (
-            <Image
-            src="/images/gears.svg"
-            width={100}
-            height={100}
-            alt="automated testing"
-            style={{ objectFit: 'contain' }}
-            className={experienceStyles.svgFilter}
-          />
-          ),
-          years: '2017-2019',
-          summary: <PingQuality />
-        },
-        {
-          id: 2,
-          icon: (
-            <Image
-            src="/images/devtools.svg"
-            width={90}
-            height={90}
-            alt="toolbox"
-            style={{ objectFit: 'contain' }}
-            className={experienceStyles.svgFilter}
-          />
-          ),
-          years: '2019-2021',
-          summary: <PingDevTools />
-        },
-        {
-          id: 3,
-          icon: (
-            <Image
-            src="/images/leader.svg"
-            width={90}
-            height={90}
-            alt="team silhouettes"
-            style={{ objectFit: 'contain' }}
-            className={experienceStyles.svgFilter}
-          />
-          ),
-          years: '2021-2022',
-          summary: <PingLeader />
-        },
-      ],
-      title: 'Ping Identity',
-      location: 'Austin, TX and Remote from Boulder, CO',
-      years: '2017-2022',
-      duration: '5 years',
-    },
-    {
-      id: 5,
-      icon: (
-        <Image
-          src={earthIcon}
-          className={utilStyles.borderCircle}
-          alt="Web and climate image"
-          style={{ objectFit: 'contain' }}
-        />
-      ),
-      title: 'Career Shift to Full-Stack Climate or Civic Tech',
-      location: 'Boulder, CO',
-      years: 'July 2022 - Present',
-      description: <FutureDescription />,
-    },
-  ];
+  const isNotMobile = useMediaQuery('(min-width:600px)');
+  const isMobile = useMediaQuery('(max-width:599px)');
 
   return (
-    <section id="experience" className={`${sectionStyles.vertical} ${sectionStyles.light}`}>
+    <section id="experience" className={`${sectionStyles.container} ${sectionStyles.vertical} ${sectionStyles.light}`}>
       <header style={{ marginBottom: "20px" }}>
-        <Typography component="h2" variant="h3" fontWeight="bold" align="center">
+        <Typography variant="h3" className={isMobile ? utilStyles.h3mobile : ''} fontWeight="bold" align="center">
               Experience
         </Typography>
         <Typography component="p" align="center">

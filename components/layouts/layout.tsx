@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import ButtonAppBar from '../appbar';
-import Toolbar from '@mui/material/Toolbar';
-import sectionStyles from '../../styles/section.module.css';
+import { Container, Toolbar } from '@mui/material';
+import utilStyles from '../../styles/utils.module.css';
+import footerStyles from '../../styles/footer.module.css';
 
 export const siteTitle = 'Angela Hsu';
 
@@ -13,11 +14,14 @@ type LayoutProps = {
 export default function Layout(props: LayoutProps) {
   const { children } = props;
   return (
-    <>
+    <Container className={utilStyles.container}>
       <ButtonAppBar />
       <Toolbar />
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <meta
           name="description"
           content="Learn how to build a personal website using Next.js"
@@ -32,9 +36,9 @@ export default function Layout(props: LayoutProps) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main>{children}</main>
-      <footer className={`${sectionStyles.footer} `}>
-        <p className={sectionStyles.footerContent}>&copy; 2022 Angela Hsu</p>
+      <footer className={footerStyles.footer}>
+        <p className={footerStyles.footerContent}>&copy; 2022 Angela Hsu</p>
       </footer>  
-    </>
+    </Container>
   );
 }

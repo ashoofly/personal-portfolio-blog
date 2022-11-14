@@ -1,3 +1,99 @@
+.container {
+  padding: 0;
+  background-color: var(--primary-light);
+  max-width: 100%;
+}
+
+.flexCenterVert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  object-fit: contain;
+}
+
+.figcaption {
+  max-width: 250px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: Noto Serif;
+  font-style: italic;
+}
+
+.figcaption a {
+  text-decoration: none;
+  color: var(--secondary-main);
+}
+
+.figcaption a:hover {
+  color: var(--third-contrastText);
+}
+
+.linkNoHover:hover {
+  color: var(--primary-contrastText);
+}
+
+@media (max-width: 599px) {
+  .img {
+    width: 180px;
+    height: auto;
+  }
+
+  .figcaption {
+    /* font-style: normal;
+    font-family: IBM Plex Sans JP, sans-serif; */
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .h5mobile {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .h3mobile {
+    font-size: 2rem;
+  }
+
+  .h2mobile {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .typingEffectMobile {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
+@media (min-width: 600px) {
+  .header {
+    display: flex;
+    align-items: center;
+  }
+
+  .img {
+    width: 200px;
+    height: auto;
+  }
+
+  .figcaption {
+    margin-top: 0.5rem;
+  }
+}
+
+
+
+
+
 .section {
   padding: 50px;
 }
@@ -44,22 +140,3 @@
   color: #666;
 }
 
-.figcaption {
-  max-width: 250px;
-  font-size: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-family: Noto Serif;
-  font-style: italic;
-  margin-top: 0.5rem;
-}
-
-.figcaption a {
-  text-decoration: none;
-  color: var(--secondary-main);
-}
-
-.figcaption a:hover {
-  color: var(--third-contrastText);
-}

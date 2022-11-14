@@ -14,12 +14,11 @@ type SubExperienceProps = {
 }
 
 const SubExperienceCard = ({ phases }: SubExperienceProps) => {
-  console.log(phases);
   return (
     <Box>
       {phases.map(({id, icon, summary, years}, index) => (
-        <>
-          <Card key={id} className={`${experience.card} ${sectionStyles.light}`}>
+        <Box key={id}>
+          <Card className={`${experience.card} ${sectionStyles.light}`}>
             <CardContent className={experience.cardContent}>
               <Box className={experience.icon}>{icon}</Box>
               <Box className={experience.right}>
@@ -33,7 +32,7 @@ const SubExperienceCard = ({ phases }: SubExperienceProps) => {
             </CardContent>
           </Card>
           {(index < phases.length-1) && <Box className={experience.halfTimeline}></Box>}
-        </>
+        </Box>
       ))};
     </Box>
   );

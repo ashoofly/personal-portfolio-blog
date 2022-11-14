@@ -1,17 +1,8 @@
-import Image from 'next/image';
-import { Box, Typography } from '@mui/material';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import GitHubIcon from '@mui/icons-material/GitHub';
-
-import indexStyles from '../../styles/index.module.css';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import sectionStyles from '../../styles/section.module.css';
-import utilStyles from '../../styles/utils.module.css';
-
-import TypingEffect from '../typingEffect';
-import Link from '@mui/material/Link';
-
-import SummaryText from '../content/summaryText.mdx';
-import { orange, lightBlue, deepPurple, pink, blue, indigo, teal, green, red, blueGrey, amber, purple, brown, deepOrange } from '@mui/material/colors';
+import { orange, deepPurple, pink, indigo, green } from '@mui/material/colors';
+import SummaryHeaderMobile from '../layouts/mobile/summaryLayout';
+import SummaryHeaderDesktop from '../layouts/desktop/summaryLayout';
 
 const attributes = [
   {
@@ -39,67 +30,22 @@ const attributes = [
   },
 ]
 
-const textRenderer = (text, i) => {
+const textRenderer = (text: string, i: number) => {
   return (
     <span style={{ color: attributes[i].color}}>{text}</span>
   );
 }
 
-type SummaryProps = {
-  content: string
-}
-
-export default function Summary(props: SummaryProps) {
-  const { content } = props;
+export default function Summary() {
+  const isMobile = useMediaQuery('(max-width:599px)');
   return (
-      <section id="about" className={`${sectionStyles.horizontal} ${indexStyles.intro} ${sectionStyles.light}`}>
-        <figure style={{
-          display: 'flex',
-          'flex-direction': 'column',
-          'align-items': 'center',
-          'gap': '10px'
-        }}>
-          <Image
-            priority
-            src="/images/profile.png"
-            // className={utilStyles.borderCircle}
-            height={250}
-            width={250}
-            // layout="responsive"
-            alt="Angela Hsu faceshot"
-            style={{ objectFit: "contain" }}
-          />
-          <figcaption className={utilStyles.figcaption}><i>yes, this is the only picture of me,<br />
-            I use it everywhere</i></figcaption>
-        </figure>
-
+      <section id="about" className={`${sectionStyles.container} ${sectionStyles.light}`}>
         <summary>
-          <header>
-            <Typography variant="h5">
-              Hi, I&apos;m
-            </Typography>
-            <Typography variant="h2" fontWeight="bold">
-              Angela Hsu
-            </Typography>
-          </header>
-          <Box color="text.secondary">
-            <TypingEffect 
-              text={attributes.map(attr => attr.text)} 
-              displayTextRenderer={textRenderer}
-            />
-          </Box>
-          <Box sx={{
-            display: 'flex',
-            gap: '10px',
-            height: '3rem',
-            alignItems: 'center'
-          }}>
-            <Link href="https://www.linkedin.com/in/ayhsu/" target="_blank" rel="noreferrer"><LinkedInIcon color="action" fontSize="large" /></Link>
-            <Link href="https://github.com/ashoofly" target="_blank" rel="noreferrer"><GitHubIcon color="action" fontSize="large" /></Link>
-          </Box>
-          <section className={sectionStyles.content}>
-            <SummaryText />
-          </section>
+          {isMobile ? 
+            <SummaryHeaderMobile attributes={attributes} textRenderer={textRenderer} /> 
+            : 
+            <SummaryHeaderDesktop attributes={attributes} textRenderer={textRenderer} />
+          }
         </summary>
       </section>
   );

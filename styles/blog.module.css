@@ -1,7 +1,14 @@
 .container {
-  margin-top: 3rem;
   padding: 20px; 
   background-color: var(--primary-light);
+}
+
+.container a {
+  color: var(--third-main);
+}
+
+.container a:hover {
+  color: var(--secondary-main);
 }
 
 .tagTitle {

@@ -3,7 +3,7 @@ import { ThemeOptions } from '@mui/material/styles';
 const portfolioThemeOptions: ThemeOptions = {
   typography: {
     fontFamily: [
-      'IBM Plex Sans JP',
+      'IBM Plex Sans',
       'sans-serif',
       'Noto Serif'
     ].join(','),

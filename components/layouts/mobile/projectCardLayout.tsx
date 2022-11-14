@@ -1,19 +1,19 @@
 import { Box, Typography, Link } from '@mui/material';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import PublicIcon from '@mui/icons-material/Public';
-import BadgeArray from './badgeArray';
-import project from '../styles/projects.module.css';
-
-import utils from '../styles/utils.module.css';
+import BadgeArray from '../../badgeArray';
+import project from '../../../styles/projects.module.css';
+import utils from '../../../styles/utils.module.css';
 
 type ProjectCardProps = {
   details: {
-    id: number,
+    id: string,
     title: string,
     subtitle: string,
     dates: string,
-    image: string,
+    image: StaticImageData,
+    additionalImages?: StaticImageData[],
     demo: string,
     source: string,
     imageCredit?: string,
@@ -25,19 +25,11 @@ type ProjectCardProps = {
   }
 }
 
-export default function ProjectCard(props: ProjectCardProps) {
-  const { title, subtitle, dates, image, demo, source, skills, description, imageCredit } = props.details;
+export default function MobileProjectCard(props: ProjectCardProps) {
+  const { title, subtitle, dates, image, demo, source, skills, description, imageCredit, additionalImages, id } = props.details;
   return(
-    <Box className={project.card}>
-      <Box>
-        <Image
-          src={image}
-          alt=""
-          className={project.icon}
-        />
-        {imageCredit && <figcaption className={utils.figcaption} dangerouslySetInnerHTML={{__html: imageCredit}} />}
-      </Box>
-      <Box className={project.details}>
+    <Box id={id} className={project.padding}>
+      <header>
         <Typography variant="h6" color="primary.contrastText">
           <b>{title}</b>
         </Typography>
@@ -47,9 +39,30 @@ export default function ProjectCard(props: ProjectCardProps) {
         <Typography variant="subtitle1" className={project.dates}>
           {dates}
         </Typography>
+      </header>
+      <Box className={project.figures}>
         <Typography variant="h6">
           <BadgeArray skills={skills} />
         </Typography>
+        <figure className={project.card}>
+          <Image
+            src={image}
+            alt=""
+            className={`${project.icon}`}
+          />
+          {additionalImages && additionalImages.map((image, index) => (
+            <Image
+              key={index}
+              src={image}
+              alt=""
+              className={`${project.icon} ${[project.additionalImgs]}`}
+            />
+          ))}
+          {imageCredit && <figcaption className={utils.figcaption} dangerouslySetInnerHTML={{__html: imageCredit}} />}
+        </figure>
+
+      </Box>
+      <Box className={project.details}>
         <Box className={project.links}>
           <Box className={project.link}>
             <Typography variant="subtitle2">

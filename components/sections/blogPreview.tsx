@@ -1,3 +1,5 @@
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import utilStyles from '../../styles/utils.module.css'
 import { getSortedPostsData, getAllTags } from '../../lib/posts'
 import Link from 'next/link'
@@ -23,17 +25,19 @@ type BlogPreviewProps = {
 
 export default function BlogPreview(props: BlogPreviewProps) {
   const { posts } = props;
+  const isMobile = useMediaQuery('(max-width:599px)');
+
   return (
-    <Box sx={{ padding: '50px 80px'}} className={sectionStyles.third}>
+    <section id="blogPreview" className={`${sectionStyles.container} ${sectionStyles.vertical} ${sectionStyles.third}`}>
       <header>
-        <Typography component="h2" variant="h3" fontWeight="bold" align="center">
-              Blog
+        <Typography variant="h3" className={isMobile ? utilStyles.h3mobile : ''} fontWeight="bold" align="center">
+          <Link href="/blog" className={utils.linkNoHover}>Blog</Link>
         </Typography>
         <Typography component="p" align="center">
               Most Recent Posts
         </Typography>
       </header>
-      <main style={{ paddingTop: '50px'}}>
+      <main className={sectionStyles.horizontalMargins}>
         <List aria-label="blog-posts" className={utils.list}>
           {posts.map(({ slug, created, updated, title }) => (
             <ListItem className={utils.listItem} key={slug}>
@@ -45,6 +49,6 @@ export default function BlogPreview(props: BlogPreviewProps) {
           ))}
         </List>     
     </main>
-    </Box>
+    </section>
   )
 }

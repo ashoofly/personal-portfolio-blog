@@ -18,7 +18,7 @@ export default function BlogLayout(props: BlogLayoutProps) {
   return (
     <Container className={blog.container}>
       <Box>
-        {!home ? (
+        {/* {!home ? (
           <nav className={blog.backToHome}>
             <Link href="/blog">← Blog Home</Link>
           </nav>
@@ -26,7 +26,7 @@ export default function BlogLayout(props: BlogLayoutProps) {
           <nav className={blog.backToHome}>
             <Link href="/">← Home</Link>
           </nav>
-        )}
+        )} */}
         <main className={blog['main-left']}>
           {children}
         </main>

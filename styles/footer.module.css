@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 20px; */
+  background-color: #34515e;
+  color: #eeeecb;
+}
+
+.footerContent {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+@media (min-width: 0px), screen and (orientation: landscape) {
+  .footer {
+    min-height: 48px;
+  }
+}
+
+@media (min-width: 600px) {
+  .footer {
+    min-height: 64px;
+  }
+}

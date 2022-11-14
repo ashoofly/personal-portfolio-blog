@@ -1,0 +1,13 @@
+.figure {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px; */
+}
+
+.linkContainer {
+  display: flex;
+  gap: 10px;
+  height: 3rem;
+  align-items: center;
+}

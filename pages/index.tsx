@@ -7,6 +7,8 @@ import Experience from '../components/sections/experience';
 import Summary from '../components/sections/summary';
 import Projects from '../components/sections/projects';
 import BlogPreview from '../components/sections/blogPreview';
+import { Container } from '@mui/material';
+import utils from '../styles/utils.module.css';
 
 type HomeProps = {
   summary: string,
@@ -22,13 +24,13 @@ type HomeProps = {
 const Home: NextPage = (props: HomeProps) => {
   const { summary, mostRecentPostsData } = props;
   return (
-    <>
+    <Container className={utils.container}>
       <Head><title>{siteTitle}</title></Head>
       <Summary content={summary} />
       <Projects />
       <Experience />
       <BlogPreview posts={mostRecentPostsData} />
-    </>
+    </Container>
   );
 }
 

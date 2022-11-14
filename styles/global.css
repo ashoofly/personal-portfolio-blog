@@ -3,16 +3,18 @@
    CssVarsProvider (https://mui.com/material-ui/experimental-api/css-theme-variables/usage/)
 */
 :root {
-  --primary-contrastText: #e5d8c8;
+  --primary-contrastText: #E8DED2;
   --primary-main: #79A8A9;
   --primary-dark: #263238;
-  --primary-light: #e5d8c8;
+  --primary-light: #E8DED2;
   --secondary-main: #6CA3B3;
-  --secondary-contrastText: #2B4148;
+  --secondary-contrastText: #1b424d;
   --third-main: #56828F;
   --third-contrastText: #CAEEFE;
 }
-/* --primary-light: #E8DED2; */
+/* --primary-light: #E8DED2; slightly bluer */
+
+/*   --primary-light: #e5d8c8;  slightly browner */
 
 html {
   scroll-behavior: smooth;
@@ -22,14 +24,12 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'IBM Plex Sans JP', sans-serif;
-  /* font-family: 'Noto Serif', serif; */
-  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
-    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
+  font-family: 'IBM Plex Sans', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+  Cantarell, Fira Sans, Droid Sans, sans-serif;
   line-height: 1.6;
   font-size: 18px;
   background-color: var(--primary-light);
-  color: var(--primary-dark);
+  color: var(--secondary-contrastText);
 }
 
 
@@ -44,9 +44,4 @@ a {
 
 a:hover {
   color: var(--third-contrastText);
-}
-
-img {
-  max-width: 100%;
-  display: block;
 }
