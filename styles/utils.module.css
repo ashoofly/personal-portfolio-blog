@@ -2,6 +2,7 @@
   padding: 0;
   background-color: var(--primary-light);
   max-width: 100%;
+  overscroll-behavior: contain;
 }
 
 .flexCenterVert {
