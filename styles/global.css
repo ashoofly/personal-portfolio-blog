@@ -16,8 +16,22 @@
 
 /*   --primary-light: #e5d8c8;  slightly browner */
 
+@media (max-width: 599px) {
+  :target {
+    scroll-margin-top: 56px;
+  }
+}
+
+@media (min-width: 600px) {
+  :target {
+    scroll-margin-top: 64px;
+  }  
+}
+
+
 html {
   scroll-behavior: smooth;
+  overscroll-behavior: contain;
 }
 
 html,
@@ -50,7 +64,7 @@ blockquote {
   border-left: 5px solid #ccc;
   margin: 1.5em 10px;
   padding: 0.5em 10px;
-  font-size: 90%;
+  /* font-size: 90%; */
   color: #555758;
 }
 blockquote p {
