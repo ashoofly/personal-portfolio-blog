@@ -1,3 +1,13 @@
+.post a {
+  font-weight: bold;
+}
+
+.post b {
+  /* color: #575b5e; */
+  color: #4e4f50;
+}
+
+
 .container {
   padding: 20px; 
   background-color: var(--primary-light);

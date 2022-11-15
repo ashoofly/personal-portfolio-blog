@@ -45,3 +45,16 @@ a {
 a:hover {
   color: var(--third-contrastText);
 }
+
+blockquote {
+  border-left: 5px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  font-size: 90%;
+  color: #555758;
+}
+blockquote p {
+  display: inline-block;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
