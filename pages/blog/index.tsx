@@ -25,7 +25,7 @@ const BlogHome: NextPage = (props: BlogHomeProps) => {
   const { allPostsData, allTags } = props;
 
   return (
-    <BlogLayout allTags={allTags} className={utils.blog} home>
+    <BlogLayout allTags={allTags} home>
       <Typography variant="h3" className={utils.listTitle}>Blog</Typography>
       <List aria-label="blog-posts" className={utils.list}>
         {allPostsData.map(({ slug, created, updated, title }) => (

@@ -16,7 +16,7 @@ type HomeProps = {
     created: string
     updated: string
     title: string
-    id: string
+    slug: string
     tags: string
   }[], 
 }
@@ -26,7 +26,7 @@ const Home: NextPage = (props: HomeProps) => {
   return (
     <Container className={utils.container}>
       <Head><title>{siteTitle}</title></Head>
-      <Summary content={summary} />
+      <Summary />
       <Projects />
       <Experience />
       <BlogPreview posts={mostRecentPostsData} />
