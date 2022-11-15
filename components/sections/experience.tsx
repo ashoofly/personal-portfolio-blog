@@ -154,7 +154,6 @@ const experienceData = [
 ];
 
 export default function Experience() {
-  const isNotMobile = useMediaQuery('(min-width:600px)');
   const isMobile = useMediaQuery('(max-width:599px)');
 
   return (

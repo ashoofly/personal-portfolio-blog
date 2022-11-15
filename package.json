@@ -30,9 +30,9 @@
     "remark-html": "^15.0.1"
   },
   "devDependencies": {
+    "@types/mdx": "^2.0.3",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
-    "@types/mdx": "^2.0.3",
     "@types/react-typing-effect": "^2.0.3",
     "eslint": "8.26.0",
     "eslint-config-next": "13.0.2",

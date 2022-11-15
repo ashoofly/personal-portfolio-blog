@@ -33,7 +33,7 @@ const SubExperienceCard = ({ phases }: SubExperienceProps) => {
           </Card>
           {(index < phases.length-1) && <Box className={experience.halfTimeline}></Box>}
         </Box>
-      ))};
+      ))}
     </Box>
   );
 }
