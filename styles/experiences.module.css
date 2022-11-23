@@ -92,7 +92,7 @@
   .right {
     grid-column: 3 / 3;
     grid-row: 1 / 1;
-    max-width: 400px;
+    max-width: 575px;
     justify-self: left;
     display: flex;
     flex-direction: column;
@@ -106,7 +106,7 @@
     flex-direction: column;
     align-items: flex-end;
     text-align: right;
-    max-width: 500px;
+    max-width: 575px;
     justify-self: right;
   }
 
