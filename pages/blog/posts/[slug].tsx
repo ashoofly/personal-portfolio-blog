@@ -26,7 +26,7 @@ type PostProps = {
 }
 
 function displayTags(tags: string[]) {
-  return tags.reduce((acc, tag, index) => {
+  return tags.sort().reduce((acc, tag, index) => {
     if (index < tags.length-1) {
       return [
         ...acc,
