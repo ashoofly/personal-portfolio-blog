@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import { Typography, List, ListItem, ListItemText } from '@mui/material';
 import { getSortedPostsData, getAllTags } from '../../lib/posts';
-import { formatDateString } from '../../components/date';
+import { formatDateString, formatAbbrevDate } from '../../components/date';
 import utils from '../../styles/utils.module.css';
 import BlogLayout from '../../components/layouts/blogLayout';
 
@@ -32,7 +32,7 @@ const BlogHome: NextPage = (props: BlogHomeProps) => {
           <ListItem className={utils.listItem} key={slug}>
             <ListItemText 
               primary={<Link href={`/blog/posts/${slug}`}>{title}</Link>} 
-              secondary={updated ? `${formatDateString(updated)} (updated)` : `${formatDateString(created)}`} 
+              secondary={updated ? `${formatDateString(created)} (updated ${formatAbbrevDate(updated)})` : `${formatDateString(created)}`} 
             />
           </ListItem>
         ))}

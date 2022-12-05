@@ -6,7 +6,7 @@ import { MDXRemote, MDXRemoteSerializeResult } from 'next-mdx-remote'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Box, Typography } from '@mui/material';
 import { getAllPostIds, getPostData, getAllTags } from '../../../lib/posts';
-import { formatDateString } from '../../../components/date';
+import { formatDateString, formatAbbrevDate } from '../../../components/date';
 import BlogLayout from '../../../components/layouts/blogLayout';
 import blog from '../../../styles/blog.module.css';
 import utilStyles from '../../../styles/utils.module.css';
@@ -50,11 +50,11 @@ const Post: NextPage = (props: PostProps) => {
   return (
     <BlogLayout allTags={allTags}>
       <Typography variant="h4" className={isMobile ? utilStyles.h4mobile : ''} sx={{ marginBottom: '1rem'}}>{title}</Typography>
-      <Typography variant="subtitle1" color="text.secondary" sx={{ fontSize: '0.95rem', margin: '0' }}>
-        <span>{updated && `updated ${formatDateString(updated)}`}</span>
-      </Typography>
+
       <Typography variant="subtitle1" color="text.secondary" sx={{ fontSize: '0.95rem' }}>
-        {`created ${formatDateString(created)}`}</Typography>
+        {`created ${formatDateString(created)}`}<span style={{fontWeight: '500', fontSize: '0.9rem', color: '#1b424d' }}>{updated && ` (updated: ${formatAbbrevDate(updated)})`}</span>
+      </Typography>
+
       <Typography variant="subtitle2" sx={{ margin: '1rem 0', fontSize: '0.95rem'}}>
         <b>Tags:</b> {displayTags(tags)}
       </Typography>
