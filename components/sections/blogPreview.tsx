@@ -9,7 +9,7 @@ import type { NextPage } from 'next'
 import {
   Box, Typography, List, ListItem, ListItemText
 } from '@mui/material';
-import { formatDateString } from '../date';
+import { formatDateString, formatAbbrevDate } from '../date';
 import utils from '../../styles/utils.module.css';
 import sectionStyles from '../../styles/section.module.css';
 
@@ -43,7 +43,7 @@ export default function BlogPreview(props: BlogPreviewProps) {
             <ListItem className={utils.listItem} key={slug}>
               <ListItemText 
                 primary={<Link href={`/blog/posts/${slug}`}>{title}</Link>} 
-                secondary={updated ? `${formatDateString(updated)} (updated)` : `${formatDateString(created)}`} 
+                secondary={updated ? `${formatDateString(created)} (updated ${formatAbbrevDate(updated)})` : `${formatDateString(created)}`} 
               />
             </ListItem>
           ))}
