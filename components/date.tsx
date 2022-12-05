@@ -9,3 +9,8 @@ export function formatDateString(dateString: string) {
   const date = parseISO(dateString);
   return format(date, 'LLL d, yyyy');
 }
+
+export function formatAbbrevDate(dateString: string) {
+  const date = parseISO(dateString);
+  return format(date, 'LL/dd/yy');
+}
